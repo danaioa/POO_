@@ -54,8 +54,7 @@ add_executable(${PROJECT_NAME}
     main.cpp
     generated/src/Helper.cpp
     env_fixes.h
-        headers/caractere.h
-        headers/game.h
+        headers/Produs.h
 )
 
 include(cmake/CompilerFlags.cmake)

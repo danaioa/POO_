@@ -1,0 +1,14 @@
+Piept de pui la gratar, 30, 250
+Salata cu ton, 25, 300
+Spaghete integrale cu sos de rosii, 20, 350
+Ciorba de legume, 15, 120
+Burger vegan, 18, 350
+Salata de quinoa cu legume, 20, 300
+Chiftelute de curcan, 25, 280
+Tofu cu legume la wok, 22, 260
+Pasta de tomate cu orez, 20, 220
+Peste la gratar cu cartofi dulci, 35, 350
+Salata greceasca, 18, 280
+Ratatouille cu quinoa, 25, 290
+Supa de linte, 15, 150
+Sandwich cu hummus si legume, 14, 200

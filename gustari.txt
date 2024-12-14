@@ -1,0 +1,15 @@
+Migdale, 10, 150
+Banana, 12, 100
+Granola cu iaurt, 14, 180
+Baton de proteine, 20, 220
+Fructe uscate, 18, 250
+Castraveti cu hummus, 8, 120
+Mar cu unt de arahide, 15, 200
+Morcovi cu sos de iaurt, 10, 100
+Mix de nuci, 12, 180
+Batoane de cereale cu ciocolata, 18, 210
+Iaurt grecesc cu miere, 16, 160
+Fructe proaspete (struguri, pere, mere), 8, 90
+Baton de ovaz cu fructe, 14, 180
+Cacao cu migdale, 10, 150
+Branza cottage cu legume, 15, 120

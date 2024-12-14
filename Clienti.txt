@@ -1,14 +1,24 @@
-123456 5
-123457 5
-123458 5
-123459 5
-123460 0
-123461 0
-123462 0
-123463 5
-123464 0
-123465 0
-123466 0
-123467 0
-123468 0
-123469 0
+ID: 1101
+Nume: dana
+Telefon: 0725353635
+Adresa: stada x nr y
+Varsta: 20
+Greutate: 6 kg
+Inaltime: 175 cm
+NrComenzi: 1
+Gen: Feminin
+Calorii: -
+Data expirare abonament: 14-01-2025
+---------------------------
+ID: 2201
+Nume: ana
+Telefon: 0732898789
+Adresa: stada y nr x
+Varsta: 45
+Greutate: 54 kg
+Inaltime: 160 cm
+NrComenzi: 1
+Gen: Feminin
+Calorii: -
+Data expirare abonament: 14-01-2025
+---------------------------

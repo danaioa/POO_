@@ -1,0 +1,14 @@
+Somon la cuptor, 35, 350
+Mancare de linte, 25, 280
+Friptura de vita cu cartofi, 40, 450
+Peste la gratar cu legume, 30, 320
+Pizza cu legume, 20, 400
+Supa crema de broccoli, 15, 180
+Salata de pui cu avocado, 30, 350
+Mancare de naut, 20, 250
+Stir fry de vita cu legume, 30, 380
+Tocanita de porc cu cartofi, 35, 400
+Mancare de spanac cu orez, 22, 250
+Mancare de dovleac cu linte, 18, 230
+Supa de rosii, 12, 150
+Paste cu crema de branza si spanac, 25, 320

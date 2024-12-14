@@ -1,3 +1,7 @@
-Pizza Margherita 15 20.5
-Spaghetti Carbonara 20 30.0
-Salata Caesar 10 15.75
+Salata de Quinoa si Legume,35,350,80,faina;rosii;castravete;ardei gras;avocado;lamaie;ulei de masline;seminte de dovleac;coriandru,da
+Supa de Linte cu Legume,25,250,45,linte;morcovi;telina;ceapa;rosii;usturoi;turmeric;coriandru,da
+Piept de Pui la Gratar cu Broccoli si Cartofi Dulci,40,400,130,piept de pui;broccoli;cartofi dulci;ulei de masline;rozmarin;sare;piper,nu
+Smoothie Bowl cu Fructe de Padure si Seminte,28,300,64,banana;afine;capsuni;lapte de migdale;seminte de chia;nuci;miere,da
+Pasta de Avocado si Naut,30,280,180,avocado;naut fiert;tahini;lamaie;usturoi;ulei de masline;sare;piper,da
+Tocana de Legume cu Linte,32,350,150,linte;morcovi;cartofi;ceapa;rosii;dovlecel;ardei;usturoi;ulei de masline;busuioc,da
+Orez Brun cu Legume Sote,28,320,220,orez brun;morcovi;dovlecel;mazare;ardei;sos de soia;ulei de susan;ghimbir,da

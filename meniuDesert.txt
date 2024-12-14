@@ -1,0 +1,6 @@
+Budinca de Chia,15,250,65,seminte de chia;lapte de cocos;miere;fructe de padure;banana,da
+Batoane Energetice,12,200,120,ovaz;alune;nuci;seminte de floarea-soarelui;miere;unt de migdale;ciocolata neagra,da
+Mousse de Avocado,10,180,220,avocado;cacao;miere;vanilie;sare,da
+Mere Coapte,8,220,130,mere;scortisoara;nuci;miere,da
+Cheesecake Vegan,18,280,305,avocado;fructe de padure;faina de migdale;miere;fulgi de cocos,da
+Inghetata Banane,10,150,230,banane;cacao;miere,da

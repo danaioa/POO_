@@ -1,0 +1,13 @@
+Omleta cu legume, 15, 200
+Iaurt cu fructe, 10, 150
+Paine prajita cu avocado, 12, 250
+Clatite cu sirop de artar, 20, 300
+Smoothie cu banane si afine, 18, 180
+Cereale integrale cu lapte, 13, 220
+Sandwich cu ou si branza, 14, 250
+Porridge cu miere, 12, 200
+Toast cu unt de arahide, 14, 230
+Batoane de granola, 16, 180
+Crema de branza cu legume, 10, 120
+Salata de fructe, 8, 100
+Briose cu morcov, 18, 220
