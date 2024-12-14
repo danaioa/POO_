@@ -223,7 +223,7 @@ public:
         return produse;
     }
 
-    // Afișează meniul cu produse
+
     void afiseazaMeniu() const {
         int index = 1;
         for (const auto& produs : produse) {
@@ -232,7 +232,7 @@ public:
         }
     }
 
-    // Returnează produsul selectat pe baza indexului
+
     unique_ptr<Produs> selecteazaProdus(int index) {
         if (index > 0 && index <= produse.size()) {
             return std::move(produse[index - 1]);
@@ -247,7 +247,7 @@ public:
         return produse.size();
     }
 
-    // Citire produse din fișier
+
     void citesteProduseDinFisier(const string& numeFisier, bool esteBautura = false) {
         ifstream fisier(numeFisier);
         if (!fisier.is_open()) {
@@ -355,15 +355,14 @@ int citesteUltimulNumar(const string& filename) {
     ifstream file(filename);
     if (!file.is_open()) {
         cerr << "eroare la deschiderea fisierului!" << endl;
-        return -1;  // returneaza un ID invalid in caz de eroare
+        return -1;
     }
 
     string linie;
     int ultimul_id = 0;
 
-    // citim linie cu linie
+
     while (getline(file, linie)) {
-        // cautam linia care incepe cu "ID: "
         size_t pos = linie.find("ID: ");
         if (pos == 0) {  // linia incepe cu "ID: "
             try {
