@@ -1,4 +1,4 @@
-HelloFresh
+HelloFresh 🌱
 ---------
 
 HelloFresh reprezintă o aplicație creată pentru a îți oferi posibilitatea de a comanda mâncare sănătoasă și diversificată, adaptată perfect stilului tău de viață. În funcție de tipul de cont pe care îl alegi, vei avea acces la o gamă largă de facilități exclusive, fiecare dintre acestea aducând reduceri considerabile și servicii personalizate.
