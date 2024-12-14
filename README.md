@@ -1,4 +1,13 @@
-# Nu primesc notă pentru că nu am pus titlu și descriere
+HelloFresh
+---------
+
+HelloFresh reprezintă o aplicație creată pentru a îți oferi posibilitatea de a comanda mâncare sănătoasă și diversificată, adaptată perfect stilului tău de viață. În funcție de tipul de cont pe care îl alegi, vei avea acces la o gamă largă de facilități exclusive, fiecare dintre acestea aducând reduceri considerabile și servicii personalizate.
+
+În cadrul CONȚULUI STANDARD, vei beneficia de o reducere de 20% la transport, o opțiune convenabilă pentru cei care doresc să își mențină un stil de viață sănătos la prețuri accesibile. Dacă îți dorești mai multe avantaje, CONȚUL PREMIUM îți oferă o reducere de 25% la transport, precum și acces la funcții premium, cum ar fi calcularea numărului de calorii necesar pentru a-ți atinge obiectivele nutriționale, posibilitatea de a comanda un plan alimentar personalizat și, nu în ultimul rând, rezervarea unei mese într-un restaurant HelloFresh, unde mâncarea este pregătită și așteaptă să fie savurată la ora stabilită.
+
+Pentru cei care doresc un tratament exclusivist, CONȚUL VIP reprezintă alegerea ideală. Acesta include toate beneficiile contului premium, dar cu o reducere generoasă de 35% la transport. Mai mult decât atât, contul VIP îți permite să îți alegi sportul dorit, să selectezi antrenorul preferat și să programezi sesiunile de antrenament în funcție de disponibilitatea ta.
+
+Astfel, HelloFresh nu doar că îți oferă o varietate de opțiuni alimentare sănătoase și delicioase, dar te ajută și să îți atingi obiectivele de sănătate și fitness, într-un mod convenabil și complet personalizat.
 
 ### Important!
 Aveți voie cu cod generat de modele de limbaj la care nu ați contribuit semnificativ doar în folder-ul `generated`.
