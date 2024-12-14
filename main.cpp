@@ -1299,7 +1299,7 @@ class ContVip:public Cont {
             return;
         }
 
-        sportAles = static_cast<Sport>(alegere - 1); // Corectăm offset-ul
+        sportAles = static_cast<Sport>(alegere - 1);
         cout << "Ai ales sportul: " << getSportString() << endl;
 
         alegeZiSiOra();
