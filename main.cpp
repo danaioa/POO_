@@ -439,13 +439,6 @@ public:
 
     virtual ~Client() = default;
 
-    Client(const Client& other)
-        : Nume(other.Nume), Telefon(other.Telefon), Adresa(other.Adresa),
-          Optiune(other.Optiune), Id_Client(other.Id_Client), varsta(other.varsta), gen(other.gen), inaltime(other.inaltime), greutate(other.greutate),
-            NrComenzi(other.NrComenzi),pret(other.pret) {}
-
-
-
     Client& operator=(Client other) {
         swap(Id_Client, other.Id_Client);
         swap(Nume, other.Nume);
@@ -457,7 +450,9 @@ public:
 
 
     [[nodiscard]] int getPret() const { return pret; }
-    void setPret(int pretNou) { pret = pretNou; }
+    void setPret(double cost) {
+        pret = static_cast<int>(cost);
+    }
 
     [[nodiscard]] int getVarsta() const { return varsta; }
     [[nodiscard]] const string& getNume() const { return Nume; }
@@ -486,7 +481,6 @@ public:
 
         string linie;
         string continutFisier;
-        bool clientGasit = false;
 
         while (getline(fisier, linie)) {
             if (linie.find("ID: ") == 0) {
@@ -508,9 +502,6 @@ public:
                 }
             }
 
-            if (!clientGasit) {
-                continutFisier += linie + "\n";
-            }
         }
 
         fisier.close();
@@ -616,7 +607,7 @@ public:
     double costlivrare() override {
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_int_distribution<> dist(1, 50);
+        std::uniform_int_distribution<> dist(1, 20);
         int costLivrare = dist(gen);
         return costLivrare;
     }
@@ -640,7 +631,7 @@ public:
     double costlivrare() override {
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_int_distribution<> dist(1, 50);
+        std::uniform_int_distribution<> dist(1, 20);
         double cost = dist(gen);
         /// ai reducere 10% la pretul de livrare daca  ai cont standard
         cost*=0.9;
@@ -829,7 +820,7 @@ public:
 
 
             while (caloriiDisponibile > 0 && !produseDeZi.empty()) {
-                bool produsAdaugat = false;
+                //bool produsAdaugat = false;
 
                 for (auto it = produseDeZi.begin(); it != produseDeZi.end(); ++it) {
                     if (it->calorii <= caloriiDisponibile) {
@@ -838,15 +829,16 @@ public:
                         totalPret += it->pret;
 
                         it = produseDeZi.erase(it);
-                        produsAdaugat = true;
-                        break;
+                    } else {
+                        ++it;
                     }
+
                 }
 
 
-                if (!produsAdaugat) {
+                /*if (!produsAdaugat) {
                     break;
-                }
+                }*/
             }
         }
 
@@ -899,7 +891,7 @@ int getCaloriiById(int id) {
                         try {
                             return stoi(caloriiStr);
                         }
-                        catch (const invalid_argument& e) {
+                        catch (const invalid_argument&) {
                             cout << "Eroare la citirea caloriilor pentru clientul cu ID-ul " << id << endl;
                             return -1;
                         }
@@ -943,7 +935,7 @@ public:
     double costlivrare() override {
         random_device rd;
         mt19937 gen(rd());
-        uniform_int_distribution<> dist(1, 50);
+        uniform_int_distribution<> dist(1, 20);
         double costLivrare = dist(gen);
         // reducere de 15% pentru livrare la cont premium
         costLivrare *= 0.85;
@@ -1151,7 +1143,7 @@ class ContVip:public Cont {
     double costlivrare() override {
         random_device rd;
         mt19937 gen(rd());
-        uniform_int_distribution<> dist(1, 50);
+        uniform_int_distribution<> dist(1, 20);
         double costLivrare = dist(gen);
         // reducere de 25% pentru livrare la cont premium
         costLivrare *= 0.75;
@@ -1523,7 +1515,9 @@ class ClientNou : public Client {
             tipCont = OptiuneCont::Normal;
             ContNormal contNormal(0, Nume, Telefon, Adresa);
             Id_Client = ContNormal::generareCod(11);
-            setDataExpirare(1);  // 1 luna pentru Normal
+
+
+            setDataExpirare(1);
 
         }
 
@@ -1531,12 +1525,17 @@ class ClientNou : public Client {
             tipCont = OptiuneCont::Standard;
             ContNormal contStandard(0, Nume, Telefon, Adresa);
             Id_Client = ContNormal::generareCod(22);
+            cout << "       Costul contului standard: " << ContStandard::getCostCont() << endl;
+            cout<<"asdasdsdaasdsdfs";
+            setPret(ContStandard::getCostCont());
+
             setDataExpirare(1);
         }
 
         else if (optiuneCont == 3) {
             tipCont = OptiuneCont::Premium;
             ContPremium contPremium(0, Nume, Telefon, Adresa);
+            setPret(ContPremium::getCostCont());
 
             try {
                 Obiectiv* obj = ContPremium::alegeObiectiv();
@@ -1565,7 +1564,7 @@ class ClientNou : public Client {
             tipCont = OptiuneCont::VIP;
             Antrenor antrenor("Ion Popescu", "Fitness", 50.0);
             ContVip contVIP(0, Nume, Telefon, Adresa, 0);
-
+            setPret(ContVip::getCostCont());
             contVIP.alegeSport();
             contVIP.alegeAntrenor();
             Id_Client = ContVip::generareCod(44);
@@ -1584,7 +1583,7 @@ class ClientNou : public Client {
                 }
             }catch (const exception& e) {
                 cout << "Eroare: " << e.what() << endl;
-                caloriiZilnice = 0;  // Dacă apare o eroare, setează caloriiZilnice la 0
+                caloriiZilnice = 0;
             }
             setDataExpirare(1);
             setDataExpirare(1);
@@ -1630,6 +1629,8 @@ class InterfataUtilizator {
     unique_ptr<Client> client;
     bool trecePeste = false;
     int calorii{};
+    double pret=0;
+    int id{};
     public:
     InterfataUtilizator() : client(nullptr){}
 
@@ -1641,7 +1642,6 @@ class InterfataUtilizator {
     while (true) {
         if (!trecePeste) {
             cout << "Introduceti ID-ul: ";
-            int id;
             cin >> id;
 
             try {
@@ -1719,13 +1719,14 @@ class InterfataUtilizator {
                 break;
             }
         } else {
-            // daca treci peste, creezi un client temporar
+
             client = make_unique<Client>(-1, "Client fara cont", "Necunoscut", "Necunoscut");
             MeniuPrincipal meniu;
             afiseazaComanda(meniu, client);
             break;
         }
     }
+
 }
 
     static bool verificaId(int id, unique_ptr<Client>& client) {
@@ -1737,7 +1738,7 @@ class InterfataUtilizator {
         string linie;
         while (getline(fisier, linie)) {
             if (linie.find("ID: ") == 0) {
-                int idFisier = stoi(linie.substr(4));  // Problema aici poate fi din cauza substr(4)
+                int idFisier = stoi(linie.substr(4));
                 if (idFisier == id) {
                     string nume, telefon, adresa;
                     int nrComenzi = 0;  // Inițializăm nrComenzi
@@ -1763,7 +1764,7 @@ class InterfataUtilizator {
     static void afiseazaOptiuneServire(const unique_ptr<Client>& client, InterfataUtilizator& interfata) {
     int optiuneServire = 0;
 
-    while (true) {  // Buclă pentru a repeta în caz de opțiune invalidă
+    while (true) {
         try {
             cout << "Alege optiunea de servire:\n";
             cout << "1. La restaurant\n";
@@ -1778,19 +1779,19 @@ class InterfataUtilizator {
             switch (optiuneServire) {
                 case 1:
                     client->setOptiuneServire(InRestaurant);
-                    if (client->getId_Client() / 100 == 44) { // verifica daca utilizatorul este VIP
-                        ContVip::rezervaMasa(); // acceseaza contvip prin obiectul InterfataUtilizator
+                    if (client->getId_Client() / 100 == 44) {
+                        ContVip::rezervaMasa();
                     }
-                    return;  // Ieșim din buclă (funcția s-a terminat cu succes)
+                    return;
                 case 2:
                     client->setOptiuneServire(LaPachet);
-                    return;  // Ieșim din buclă (funcția s-a terminat cu succes)
+                    return;
                 default:
                     throw ProdusInvalidException("Optiune invalida.");
             }
         } catch (const ProdusInvalidException& e) {
             cout << e.what() << endl;
-            // Continuăm să cerem opțiunea până când utilizatorul introduce o opțiune validă
+
         }
     }
 }
@@ -1801,10 +1802,7 @@ static void afiseazaComanda(MeniuPrincipal& meniu, const unique_ptr<Client>& cli
     int optiune;
     bool continuare = true;
     vector<pair<unique_ptr<Produs>, int>> comanda;
-
-   double total = 0;
-    int nrComenzi = client->getNrComenzi();
-
+    double total = 0;
 
     while (continuare) {
         afiseazaTipMeniu();
@@ -1815,7 +1813,7 @@ static void afiseazaComanda(MeniuPrincipal& meniu, const unique_ptr<Client>& cli
             meniu.citesteProduseDinFisier("meniu.txt");
             break;
         case 2:
-            meniu.citesteProduseDinFisier("meniuBar");
+            meniu.citesteProduseDinFisier("meniuBar.txt");
             break;
         case 3:
             meniu.citesteProduseDinFisier("meniuDesert.txt");
@@ -1841,8 +1839,9 @@ static void afiseazaComanda(MeniuPrincipal& meniu, const unique_ptr<Client>& cli
 
             comanda.emplace_back(produs->clone(), cantitate);
             cout << "Ai adaugat " << cantitate << " portii de " << produs->getNume() << "\n";
-        }
-        else {
+
+            total += produs->getPret() * cantitate;  // Adaugă la total
+        } else {
             cout << "Index invalid!\n";
         }
 
@@ -1856,60 +1855,58 @@ static void afiseazaComanda(MeniuPrincipal& meniu, const unique_ptr<Client>& cli
         cout << "ID_CLIENT: " << client->getId_Client() << "\n";
         cout << "Telefon: " << client->getTelefon() << "\n";
         cout << "Adresa: " << client->getAdresa() << "\n";
-    }
-    else {
+    } else {
         cout << "Client:------\n";
     }
 
-
-
-
     for (const auto& [produs, cantitate] : comanda) {
         cout << "Produs: " << produs->getNume()
-            << ", Cantitate: " << cantitate
-            << ", Pret unitar: " << produs->getPret() << " lei\n";
-        total += produs->getPret() * cantitate;
+             << ", Cantitate: " << cantitate
+             << ", Pret unitar: " << produs->getPret() << " lei\n";
     }
 
     if (client) {
-
-        if (client->getNrComenzi() % 5 == 0 && client->getNrComenzi() != 0) {
+        if (client->getNrComenzi() % 5 == 0) {
             cout << "Reducere de 20% aplicata!\n";
-            total = total * 0.8;
+            total *= 0.8;  // Reducere de 20%
         }
 
         if (dynamic_cast<ClientNou*>(client.get())) {
             cout << "Reducere de 25% aplicata pentru clientul nou!\n";
-            total = total * 0.75; // Reducere 25%
+            total *= 0.75;  // Reducere de 25%
         }
 
-        if (nrComenzi == 0) {
-            cout << "Aplicam taxa de creare cont...\n";
 
-
-            if (auto contStandard = dynamic_cast<ContStandard*>(client.get())) {
-                total += contStandard->costlivrare();
-                cout << "Taxa pentru ContStandard adaugata!\n";
-            } else if (auto contPremium = dynamic_cast<ContPremium*>(client.get())) {
-                total += contPremium->costlivrare();
-                cout << "Taxa pentru ContPremium adaugata!\n";
-            } else if (auto contVip = dynamic_cast<ContVip*>(client.get())) {
-                total += contVip->costlivrare();
-                cout << "Taxa pentru ContVIP adaugata!\n";
-            } else {
-                cout << "Tip de cont necunoscut!\n";
-            }
-
-        }
-
-        Client::actualizeazaNRComanda(client->getId_Client());
+        costuriInfunctieDeID(client->getId_Client(), total);
     }
 
-        cout<<"vasilica";
-        cout << "Nr comenzi (): " << client->getNrComenzi() << endl;
-
-    cout << "Total de plata: " << total << " lei\n";
+    cout << "Total de plata cu tot cu livrare : " << total << " lei\n";
 }
+
+
+
+    static void costuriInfunctieDeID(int id, double &pret) {
+        if(id / 100 == 11) {
+            ContNormal contNormal(0, "Nume", "Telefon", "Adresa");
+            pret += contNormal.costlivrare();
+        }
+
+        if(id / 100 == 22) {
+            ContStandard contStandard(0, "Nume", "Telefon", "Adresa");
+            pret += contStandard.costlivrare();
+        }
+
+        if(id / 100 == 33) {
+            ContPremium contPremium(0, "Nume", "Telefon", "Adresa");
+            pret += contPremium.costlivrare();
+        }
+
+        if(id / 100 == 44) {
+            ContVip contVip(0, "Nume", "Telefon", "Adresa");
+            pret += contVip.costlivrare();
+        }
+    }
+
 
 
 
@@ -1953,7 +1950,7 @@ static void afiseazaComanda(MeniuPrincipal& meniu, const unique_ptr<Client>& cli
 
         case 2: {
             cout << "Comanda fara cont.\n";
-            trecePeste = true;  // Permitem trecerea la comanda fără cont
+            trecePeste = true;
             break;
         }
         case 3:
@@ -1979,24 +1976,26 @@ static void afiseazaComanda(MeniuPrincipal& meniu, const unique_ptr<Client>& cli
 
             int calorii = obiectiv->calculeazaCalorii(clientNou.getGreutate(), clientNou.getInaltime(), clientNou.getVarsta(), clientNou.getGen());
             cout << "Caloriile necesare: " << calorii << "\n";
-        } else {
-            cout << "Obiectivul nu a fost setat corect.\n";
         }
-
     }
 
 };
 
-int main() {
+
+
+
+
+
+/*int main() {
     try {
 
         InterfataUtilizator interfata;
         interfata.pornire();
     }
     catch (const std::exception& e) {
-        std::cerr << "A apărut o eroare: " << e.what() << std::endl;
+        cout << "A apărut o eroare: " << e.what() << std::endl;
     }
     return 0;
-}
+}*/
 
 
