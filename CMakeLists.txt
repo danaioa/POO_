@@ -27,12 +27,12 @@ set(WARNINGS_AS_ERRORS OFF)
 
 # NOTE: Also update SFML_VERSION env var in .github/workflows/cmake.yml:84
 FetchContent_Declare(
-    SFML
-    GIT_REPOSITORY https://github.com/SFML/SFML.git
-    GIT_TAG        2.6.1
-    # GIT_TAG        69ea0cd863aed1d4092b970b676924a716ff718b # 2.6.1
-    # GIT_TAG        origin/master
-    GIT_SHALLOW    1  # works only with branches or tags, not with arbitrary commit hashes
+        SFML
+        GIT_REPOSITORY https://github.com/SFML/SFML.git
+        GIT_TAG        2.6.1
+        # GIT_TAG        69ea0cd863aed1d4092b970b676924a716ff718b # 2.6.1
+        # GIT_TAG        origin/master
+        GIT_SHALLOW    1  # works only with branches or tags, not with arbitrary commit hashes
 )
 
 FetchContent_MakeAvailable(SFML)
@@ -51,10 +51,47 @@ endif()
 
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
 add_executable(${PROJECT_NAME}
-    main.cpp
-    generated/src/Helper.cpp
-    env_fixes.h
-        headers/Produs.h
+        main.cpp
+        generated/src/Helper.cpp
+        env_fixes.h
+        includes/Produs.h
+        includes/ProdusException.h
+        includes/Produs.cpp
+        includes/Bautura.h
+        includes/Bautura.cpp
+        includes/Desert.h
+        includes/Desert.cpp
+        includes/Preparat.h
+        includes/Preparat.cpp
+        includes/MeniuPrincipal.h
+        includes/MeniuPrincipal.cpp
+        includes/Obiectiv.h
+        includes/Exceptii.h
+        includes/Client.h
+        includes/Client.cpp
+        includes/Cont.h
+        includes/Cont.cpp
+        includes/ContNormal.h
+        includes/ContNormal.cpp
+        includes/ContStandard.h
+        includes/ContStandard.cpp
+        includes/PlanAlimentar.h
+        includes/MeniuItem.h
+        includes/PlanAlimentar.cpp
+        includes/Obiectiv.cpp
+        includes/ContPremium.h
+        includes/ContPremium.cpp
+        includes/Sport.h
+        includes/Antrenor.h
+        includes/Antrenor.cpp
+        includes/ContVip.cpp
+        includes/ContVip.h
+        includes/ClientNou.h
+        includes/ClientNou.cpp
+        includes/InterfataUtilizator.h
+        includes/InterfataUtilizator.cpp
+        includes/OptiuneServire.h
+        includes/MeniuItem.cpp
 )
 
 include(cmake/CompilerFlags.cmake)
@@ -87,9 +124,9 @@ endif()
 # remove this if not using audio or if using SFML 3
 if (WIN32 AND SFML_BUILD_AUDIO)
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-      COMMAND ${CMAKE_COMMAND} -E copy_if_different
-         ${SFML_SOURCE_DIR}/extlibs/bin/x64/openal32.dll
-         $<TARGET_FILE_DIR:${PROJECT_NAME}>
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${SFML_SOURCE_DIR}/extlibs/bin/x64/openal32.dll
+            $<TARGET_FILE_DIR:${PROJECT_NAME}>
     )
 endif()
 
@@ -104,3 +141,5 @@ copy_files(FILES Clienti.txt)
 
 include_directories(${CMAKE_SOURCE_DIR}/headers)
 include_directories(${CMAKE_SOURCE_DIR}/textures)
+
+set(CMAKE_WIN32_EXECUTABLE OFF)
