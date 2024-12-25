@@ -7,11 +7,16 @@
 
 ContPremium::ContPremium(std::unique_ptr<Client> clientPtr)
     : Cont(clientPtr->getId_Client(), clientPtr->getNume(), clientPtr->getTelefon(), clientPtr->getAdresa()),
-      obiectiv(nullptr), client(std::move(clientPtr)), greutate(0),  inaltime(0),  varsta(0), gen(0) {}
+      obiectiv(nullptr), greutate(0), inaltime(0), varsta(0), gen(0) {
+    client = std::move(clientPtr);
+}
 
 ContPremium::ContPremium(int id, const std::string& nume, const std::string& telefon, const std::string& adresa)
-    : Cont(id, nume, telefon, adresa), obiectiv(nullptr), client(std::make_unique<Client>(id, nume, telefon, adresa)),
-      greutate(0), inaltime(0), varsta(0), gen(0) {}
+    : Cont(id, nume, telefon, adresa), obiectiv(nullptr), greutate(0), inaltime(0), varsta(0), gen(0) {
+    client = std::make_unique<Client>(id, nume, telefon, adresa);
+}
+
+
 
 ContPremium::~ContPremium() {
     delete obiectiv;
@@ -23,12 +28,14 @@ double ContPremium::getCostCont() {
 
 double ContPremium::costlivrare() {
     std::random_device rd;
-    std::mt19937 gen(rd());
+    std::mt19937 rng(rd());
     std::uniform_int_distribution<> dist(1, 20);
-    double costLivrare = dist(gen);
+    double costLivrare = dist(rng);
     costLivrare *= 0.85;  // reducere de 15% pentru cont premium
     return costLivrare;
 }
+
+
 
 void ContPremium::setObiectiv(Obiectiv* obj) {
     delete obiectiv;
@@ -104,13 +111,14 @@ void ContPremium::rezervaMasa() {
                 continue;
             }
 
-            int masaAleasa = -1;
+            size_t masaAleasa = -1;
             for (size_t i = 0; i < mese.size(); ++i) {
                 if (!mese[i].second) {
                     masaAleasa = i;
                     break;
                 }
             }
+
 
             if (masaAleasa == -1) {
                 std::cout << "Nu mai sunt mese disponibile pentru acest interval.\n";
