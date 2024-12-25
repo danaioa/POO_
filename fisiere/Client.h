@@ -29,6 +29,9 @@ public:
     [[nodiscard]] int getPret() const;
     void setPret(double cost);
     [[nodiscard]] int getVarsta() const;
+    [[nodiscard]] const std::string& getNume() const;
+    [[nodiscard]] const std::string& getTelefon() const;
+    [[nodiscard]] const std::string& getAdresa() const;
     [[nodiscard]] int getGen() const;
     [[nodiscard]] int getInaltime() const;
     [[nodiscard]] int getGreutate() const;
@@ -36,9 +39,9 @@ public:
     [[nodiscard]] int getNrComenzi() const;
     [[nodiscard]] OptiuneServire getOptiuneServire() const;
 
-    void setNume(const std::string& nume);
-    void setTelefon(const std::string& telefon);
-    void setAdresa(const std::string& adresa);
+   [[maybe_unused]] void setNume(const std::string& nume);
+   [[maybe_unused]] void setTelefon(const std::string& telefon);
+    [[maybe_unused]] void setAdresa(const std::string& adresa);
     void setOptiuneServire(OptiuneServire optiune);
 
     static void actualizeazaNRComanda(int id);

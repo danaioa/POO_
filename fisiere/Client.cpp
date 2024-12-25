@@ -32,6 +32,17 @@ int Client::getVarsta() const {
     return varsta;
 }
 
+const std::string& Client::getNume() const {
+    return Nume;
+}
+
+const std::string& Client::getTelefon() const {
+    return Telefon;
+}
+
+const std::string& Client::getAdresa() const {
+    return Adresa;
+}
 
 int Client::getGen() const {
     return gen;
