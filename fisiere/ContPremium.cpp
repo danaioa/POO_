@@ -65,7 +65,7 @@ Obiectiv* ContPremium::alegeObiectiv() {
     return obj;
 }
 
-int ContPremium::calculeazaNecesarCaloric() const {
+[[maybe_unused]] int ContPremium::calculeazaNecesarCaloric() const {
     if (obiectiv) {
         return obiectiv->calculeazaCalorii(greutate, inaltime, varsta, gen);
     }
@@ -80,14 +80,14 @@ std::unique_ptr<Cont> ContPremium::clone() const {
     return cont;
 }
 
-void ContPremium::setDetaliiUtilizator(int greutate_, int inaltime_, int varsta_, int gen_) {
+[[maybe_unused]] void ContPremium::setDetaliiUtilizator(int greutate_, int inaltime_, int varsta_, int gen_) {
     greutate = greutate_;
     inaltime = inaltime_;
     varsta = varsta_;
     gen = gen_;
 }
 
-void ContPremium::genereazaPlanAlimentar() const {
+[[maybe_unused]]  void ContPremium::genereazaPlanAlimentar() const {
     int calorii = getCaloriiById(client->getId_Client());
     PlanAlimentar plan(client->getId_Client(), calorii);
     int nrZile = 7;

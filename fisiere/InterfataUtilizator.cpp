@@ -231,7 +231,7 @@ bool InterfataUtilizator::verificaId(int id, std::unique_ptr<Client>& client) {
     return false;
 }
 
-void InterfataUtilizator::afiseazaOptiuneServire(const std::unique_ptr<Client>& client, InterfataUtilizator& interfata) {
+[[maybe_unused]] void InterfataUtilizator::afiseazaOptiuneServire(const std::unique_ptr<Client>& client, InterfataUtilizator& interfata) {
     int optiuneServire = 0;
 
     while (true) {

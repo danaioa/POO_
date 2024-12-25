@@ -21,7 +21,7 @@ void MeniuPrincipal::afiseazaMeniu() const {
     }
 }
 
-std::unique_ptr<Produs> MeniuPrincipal::selecteazaProdus(int index) {
+[[maybe_unused]] std::unique_ptr<Produs> MeniuPrincipal::selecteazaProdus(int index) {
     if (index > 0 && index <= produse.size()) {
         return std::move(produse[index - 1]);
     } else {
