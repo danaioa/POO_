@@ -11,7 +11,6 @@
 #include <memory>
 
 class ContVip : public Cont {
-    std::unique_ptr<Client> client;
     static constexpr double costCont = 20.5;
     Obiectiv* obiectiv{};
     Sport sportAles;
@@ -43,7 +42,7 @@ public:
     [[nodiscard]] std::unique_ptr<Cont> clone() const override;
     static std::string trim(const std::string& str);
     static int getCaloriiById(int id);
-
 };
+
 
 #endif

@@ -27,9 +27,9 @@ void ContVip::setDetaliiUtilizator(int greutate_, int inaltime_, int varsta_, in
 
 double ContVip::costlivrare() {
     std::random_device rd;
-    std::mt19937 gen(rd());
+    std::mt19937 randomGen(rd());
     std::uniform_int_distribution<> dist(1, 20);
-    double costLivrare = dist(gen);
+    double costLivrare = dist(randomGen);
     costLivrare *= 0.75;
     return costLivrare;
 }
@@ -294,6 +294,7 @@ void ContVip::verificaLocuriDisponibile() const {
     }
 }
 
+
 std::unique_ptr<Cont> ContVip::clone() const {
     return std::make_unique<ContVip>(client->getId_Client(), client->getNume(),
                                      client->getTelefon(), client->getAdresa(),
@@ -317,11 +318,11 @@ int ContVip::getCaloriiById(int id) {
 
     std::string linie;
     while (std::getline(fisier, linie)) {
-        if (linie.find("ID: ") == 0) {
+        if (linie.starts_with("ID: ")) {
             int idFisier = std::stoi(linie.substr(4));
             if (idFisier == id) {
                 while (std::getline(fisier, linie)) {
-                    if (linie.find("Calorii: ") == 0) {
+                    if (linie.starts_with("Calorii: ")) {
                         std::string caloriiStr = linie.substr(9);
                         caloriiStr = trim(caloriiStr);
 
@@ -339,4 +340,3 @@ int ContVip::getCaloriiById(int id) {
 
     return -1;
 }
-
