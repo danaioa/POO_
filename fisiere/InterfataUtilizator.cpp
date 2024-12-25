@@ -10,7 +10,7 @@
 #include "MeniuPrincipal.h"
 #include "Produs.h"
 #include "PlanAlimentar.h"
-#include "ProdusException.h"
+//#include "ProdusException.h"
 #include "Exceptii.h"
 #include <iostream>
 #include <fstream>
@@ -234,7 +234,7 @@ bool InterfataUtilizator::verificaId(int id, std::unique_ptr<Client>& client) {
     return false;
 }
 
-[[maybe_unused]] void InterfataUtilizator::afiseazaOptiuneServire(const std::unique_ptr<Client>& client, InterfataUtilizator& interfata) {
+/*[maybe_unused]] void InterfataUtilizator::afiseazaOptiuneServire(const std::unique_ptr<Client>& client, InterfataUtilizator& interfata) {
     int optiuneServire = 0;
 
     while (true) {
@@ -266,7 +266,7 @@ bool InterfataUtilizator::verificaId(int id, std::unique_ptr<Client>& client) {
             std::cout << e.what() << std::endl;
         }
     }
-}
+}*/
 
 void InterfataUtilizator::costuriInfunctieDeID(int id, double& pret) {
     if(id / 100 == 11) {

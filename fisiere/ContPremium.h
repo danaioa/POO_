@@ -25,8 +25,8 @@ public:
     void setObiectiv(Obiectiv* obj);
     static Obiectiv* alegeObiectiv();
     [[nodiscard]] std::unique_ptr<Cont> clone() const override;
-    void setDetaliiUtilizator(int greutate_, int inaltime_, int varsta_, int gen_);
-    void genereazaPlanAlimentar() const;
+    //void setDetaliiUtilizator(int greutate_, int inaltime_, int varsta_, int gen_);
+    //void genereazaPlanAlimentar() const;
     static void rezervaMasa();
     static std::string trim(const std::string& str);
     static int getCaloriiById(int id);

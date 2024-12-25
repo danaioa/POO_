@@ -32,7 +32,7 @@ public:
     double costlivrare() override;
     void setObiectiv(Obiectiv* obj);
     static Obiectiv* alegeObiectiv();
-    [[nodiscard]] int calculeazaNecesarCaloric() const;
+    ///[[nodiscard]] int calculeazaNecesarCaloric() const;
     void genereazaPlanAlimentar() const;
     static void rezervaMasa();
     void alegeSport();

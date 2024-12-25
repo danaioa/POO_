@@ -18,7 +18,7 @@ public:
 
     void afiseazaMeniu() const;
 
-    std::unique_ptr<Produs> selecteazaProdus(int index);
+    //std::unique_ptr<Produs> selecteazaProdus(int index);
 
     [[nodiscard]] size_t getNrProduse() const;
 

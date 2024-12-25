@@ -57,12 +57,14 @@ Obiectiv* ContVip::alegeObiectiv() {
     }
 }
 
+/*
 int ContVip::calculeazaNecesarCaloric() const {
     if (obiectiv) {
         return obiectiv->calculeazaCalorii(greutate, inaltime, varsta, gen);
     }
     throw std::runtime_error("Obiectivul nu este setat.");
 }
+*/
 
 void ContVip::genereazaPlanAlimentar() const {
     int calorii = getCaloriiById(client->getId_Client());

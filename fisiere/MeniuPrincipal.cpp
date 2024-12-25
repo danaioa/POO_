@@ -21,14 +21,18 @@ void MeniuPrincipal::afiseazaMeniu() const {
     }
 }
 
-[[maybe_unused]] std::unique_ptr<Produs> MeniuPrincipal::selecteazaProdus(int index) {
-    if (index > 0 && index <= produse.size()) {
+/*
+std::unique_ptr<Produs> MeniuPrincipal::selecteazaProdus(int index) {
+    if (index > 0 && static_cast<size_t>(index) <= produse.size()) {
         return std::move(produse[index - 1]);
     } else {
         std::cout << "Index invalid!" << std::endl;
         return nullptr;
     }
 }
+*/
+
+
 
 size_t MeniuPrincipal::getNrProduse() const {
     return produse.size();

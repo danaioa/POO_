@@ -1,6 +1,5 @@
 #include <random>
 #include <fstream>
-#include <stdexcept>
 #include <iostream>
 #include "ContPremium.h"
 #include "Exceptii.h"
@@ -75,13 +74,16 @@ std::unique_ptr<Cont> ContPremium::clone() const {
     return cont;
 }
 
+/*
 [[maybe_unused]] void ContPremium::setDetaliiUtilizator(int greutate_, int inaltime_, int varsta_, int gen_) {
     greutate = greutate_;
     inaltime = inaltime_;
     varsta = varsta_;
     gen = gen_;
 }
+*/
 
+/*
 [[maybe_unused]]  void ContPremium::genereazaPlanAlimentar() const {
     int calorii = getCaloriiById(client->getId_Client());
     PlanAlimentar plan(client->getId_Client(), calorii);
@@ -89,6 +91,7 @@ std::unique_ptr<Cont> ContPremium::clone() const {
     plan.construiesteMeniu(nrZile, false);
     std::cout << "Comanda va ajunge in jurul orei 18:00 la adresa din cont.\n";
 }
+*/
 
 void ContPremium::rezervaMasa()
  {

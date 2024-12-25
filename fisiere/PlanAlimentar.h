@@ -1,14 +1,8 @@
 #ifndef PLAN_ALIMENTAR_H
 #define PLAN_ALIMENTAR_H
-
-#include <iostream>
-#include <fstream>
 #include <vector>
 #include <string>
-#include <sstream>
-#include <ctime>
 #include <iomanip>
-#include <cstdlib>
 #include "MeniuItem.h"
 
 using namespace std;
@@ -29,8 +23,8 @@ public:
 
     void construiesteMeniu(int nrZile, bool alegereManuala = false) const;
 
-    int getCalorii() const { return calorii; }
-    int getIdClient() const { return idClient; }
+    //int getCalorii() const { return calorii; }
+    //[[nodiscard]] int getIdClient() const { return idClient; }
 };
 
 string trim(const string& str);
