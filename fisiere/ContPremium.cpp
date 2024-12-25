@@ -65,12 +65,7 @@ Obiectiv* ContPremium::alegeObiectiv() {
     return obj;
 }
 
-[[maybe_unused]] int ContPremium::calculeazaNecesarCaloric() const {
-    if (obiectiv) {
-        return obiectiv->calculeazaCalorii(greutate, inaltime, varsta, gen);
-    }
-    throw std::runtime_error("Obiectivul nu este setat.");
-}
+
 
 std::unique_ptr<Cont> ContPremium::clone() const {
     auto cont = std::make_unique<ContPremium>(std::make_unique<Client>(*client));

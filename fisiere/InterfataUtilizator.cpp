@@ -54,6 +54,7 @@ void InterfataUtilizator::pornire() {
                                 PlanAlimentar plan(client->getId_Client(), calorii);
                                 plan.construiesteMeniu(nrzile, false);
                                 cout << "Comanda va ajunge in jurul orei 18:00 la adresa din cont.\n";
+                                Client::actualizeazaNRComanda(id);
                             } else {
                                 calorii = getCaloriiById(client->getId_Client());
                                 PlanAlimentar plan(client->getId_Client(), calorii);
@@ -147,7 +148,7 @@ void InterfataUtilizator::afiseazaComanda(MeniuPrincipal& meniu, const std::uniq
         int produsSelectat;
         std::cin >> produsSelectat;
 
-       if (produsSelectat > 0 && produsSelectat <= static_cast<int>(meniu.getNrProduse())){
+        if (produsSelectat > 0 && produsSelectat <= static_cast<int>(meniu.getNrProduse())) {
             const auto& produs = meniu.getProduse()[produsSelectat - 1];
             std::cout << "Ai ales: " << produs->getNume() << "\n";
 
@@ -195,10 +196,12 @@ void InterfataUtilizator::afiseazaComanda(MeniuPrincipal& meniu, const std::uniq
         }
 
         costuriInfunctieDeID(client->getId_Client(), total);
+        Client::actualizeazaNRComanda(client->getId_Client());
     }
 
     std::cout << "Total de plata cu tot cu livrare : " << total << " lei\n";
 }
+
 
 bool InterfataUtilizator::verificaId(int id, std::unique_ptr<Client>& client) {
     std::ifstream fisier("Clienti.txt");

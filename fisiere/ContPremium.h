@@ -24,7 +24,6 @@ public:
     double costlivrare() override;
     void setObiectiv(Obiectiv* obj);
     static Obiectiv* alegeObiectiv();
-    [[nodiscard]] int calculeazaNecesarCaloric() const;
     [[nodiscard]] std::unique_ptr<Cont> clone() const override;
     void setDetaliiUtilizator(int greutate_, int inaltime_, int varsta_, int gen_);
     void genereazaPlanAlimentar() const;
