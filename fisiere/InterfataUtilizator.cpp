@@ -147,7 +147,7 @@ void InterfataUtilizator::afiseazaComanda(MeniuPrincipal& meniu, const std::uniq
         int produsSelectat;
         std::cin >> produsSelectat;
 
-        if (produsSelectat > 0 && produsSelectat <= meniu.getNrProduse()) {
+       if (produsSelectat > 0 && produsSelectat <= static_cast<int>(meniu.getNrProduse())){
             const auto& produs = meniu.getProduse()[produsSelectat - 1];
             std::cout << "Ai ales: " << produs->getNume() << "\n";
 
@@ -158,7 +158,7 @@ void InterfataUtilizator::afiseazaComanda(MeniuPrincipal& meniu, const std::uniq
             comanda.emplace_back(produs->clone(), cantitate);
             std::cout << "Ai adaugat " << cantitate << " portii de " << produs->getNume() << "\n";
 
-            total += produs->getPret() * cantitate;  // Adaugă la total
+            total += produs->getPret() * cantitate;
         } else {
             std::cout << "Index invalid!\n";
         }

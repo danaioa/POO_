@@ -127,8 +127,8 @@ void ContPremium::rezervaMasa()
             bool intervalDisponibil = false;
             while (!intervalDisponibil) {
                 std::cout << "Alege un interval orar pentru rezervare:\n";
-                for (int i = 0; i < ore.size(); ++i) {
-                    std:: cout << i + 1 << ". " << ore[i] << std:: endl;
+                for (size_t i = 0; i < ore.size(); ++i) {
+                    std::cout << i + 1 << ". " << ore[i] << std::endl;
                 }
 
                 std:: cin >> alegere;
@@ -140,8 +140,8 @@ void ContPremium::rezervaMasa()
                 }
 
 
-                int masaAleasa = -1;
-                for (int i = 0; i < mese.size(); ++i) {
+                size_t masaAleasa = -1;;
+                for (size_t i = 0; i < mese.size(); ++i) {
                     if (!mese[i].second) {
                         masaAleasa = i;
                         break;
@@ -164,7 +164,7 @@ void ContPremium::rezervaMasa()
                         throw ExceptieFisier ("Nu s-a putut deschide fișierul mese.txt pentru scriere.");
                     }
 
-                    for (int i = 0; i < mese.size(); ++i) {
+                    for (size_t i = 0; i < mese.size(); ++i) {
                         outFisier << "Masa " << i + 1 << " " << ore[i] << " este " << (mese[i].second ? "rezervata" : "disponibila") << "\n";
                     }
 

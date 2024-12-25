@@ -236,7 +236,7 @@ void ContVip::alegeZiSiOra() {
     }
 
     std::cout << "Alege ziua pentru antrenament:\n";
-    for (int i = 0; i < zileDisponibile.size(); ++i) {
+    for (size_t i = 0; i < zileDisponibile.size(); ++i) {
         std::cout << i + 1 << ". " << zileDisponibile[i] << std::endl;
     }
 
@@ -251,9 +251,10 @@ void ContVip::alegeZiSiOra() {
     std::cout << "Ai ales ziua: " << zileDisponibile[ziAlesa - 1] << std::endl;
 
     std::cout << "Alege ora pentru antrenament:\n";
-    for (int i = 0; i < oreDisponibile.size(); ++i) {
+    for (size_t i = 0; i < oreDisponibile.size(); ++i) {
         std::cout << i + 1 << ". " << oreDisponibile[i] << std::endl;
     }
+
 
     int oraAleasa;
     std::cin >> oraAleasa;

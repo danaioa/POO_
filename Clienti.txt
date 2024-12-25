@@ -142,3 +142,15 @@ Gen: Masculin
 Calorii: -
 Data expirare abonament: 15-01-2025
 ---------------------------
+ID: 4401
+Nume: david
+Telefon: draghici
+Adresa: stada 56
+Varsta: 20
+Greutate: 70 kg
+Inaltime: 175 cm
+NrComenzi: 0
+Gen: Masculin
+Calorii: 1698
+Data expirare abonament: 21-01-2025
+---------------------------

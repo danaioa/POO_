@@ -38,4 +38,11 @@ public:
     [[nodiscard]] int calculeazaCalorii(int greutate, int inaltime, int varsta, int gen) const override;
 };
 
+
+class Definire : public Obiectiv {
+public:
+    [[nodiscard]] string getObiectivString() const override;
+    [[nodiscard]] int calculeazaCalorii(int greutate, int inaltime, int varsta, int gen) const override;
+};
+
 #endif // OBIECTIV_H
