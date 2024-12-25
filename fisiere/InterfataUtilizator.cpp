@@ -35,7 +35,7 @@ void InterfataUtilizator::pornire() {
             try {
                 if (verificaId(id, client)) {
                     cout << "ID valid! Puteti comanda mancare.\n";
-                    if (id / 100 == 33 || id / 100 == 22) {
+                    if (id / 100 == 33 || id / 100 == 44) {
                         int optiuneBox, generare;
                         cout << "Doriti sa comandati un plan alimentar (la pachet)? (1 - Da, 0 - Nu): ";
                         std:: cin >> optiuneBox;
@@ -44,27 +44,29 @@ void InterfataUtilizator::pornire() {
 
                         if (optiuneBox == 1) {
                             int nrzile;
+                            ok=1;
                             client->setOptiuneServire(LaPachet);
                             cout << "Pentru cate zile doriti planul alimentar: ";
-                             std::cin >> nrzile;
+                            std::cin >> nrzile;
 
                             if (generare == 1) {
                                 calorii = getCaloriiById(client->getId_Client());
                                 PlanAlimentar plan(client->getId_Client(), calorii);
-                                plan.construiesteMeniu(nrzile, false); //
+                                plan.construiesteMeniu(nrzile, false);
                                 cout << "Comanda va ajunge in jurul orei 18:00 la adresa din cont.\n";
                             } else {
                                 calorii = getCaloriiById(client->getId_Client());
                                 PlanAlimentar plan(client->getId_Client(), calorii);
-                                plan.construiesteMeniu(nrzile, true); // alegere manuala
+                                plan.construiesteMeniu(nrzile, true);
                                 cout << "---Comanda a fost plasata-----\n";
                                 cout << "---Va ajunge in jurul orei 18:00 la adresa din cont";
                             }
                         }
+
                     }
 
 
-                    if (id / 100 == 33 || id / 100 == 22) {
+                    if (ok==0 && (id / 100 == 33 || id / 100 == 44)) {
                         int optiuneServire;
                         cout << "Alege optiunea de servire:\n";
                         cout << "1. La restaurant (rezervare masa)\n";
@@ -91,8 +93,6 @@ void InterfataUtilizator::pornire() {
                             cout << e.what() << endl;
                             continue;
                         }
-                    } else {
-                        cout << "Nu aveti acces la rezervarea mesei.\n";
                     }
 
                     MeniuPrincipal meniu;
@@ -101,9 +101,9 @@ void InterfataUtilizator::pornire() {
                 } else {
                     afiseazaOptiuni(trecePeste);
                 }
+
             } catch (const ExceptieFisier& e) {
                 cout << "Eroare la citirea fisierului: " << e.what() << endl;
-                break;
             }
         } else {
 
@@ -296,7 +296,7 @@ std::string InterfataUtilizator::trim(const std::string& str) {
 int InterfataUtilizator::getCaloriiById(int id) {
     std::ifstream fisier("Clienti.txt");
     if (!fisier.is_open()) {
-        std::cerr << "Eroare la deschiderea fisierului Clienti.txt!" << std::endl;
+        std::cout << "Eroare la deschiderea fisierului Clienti.txt!" << std::endl;
         return -1;
     }
 

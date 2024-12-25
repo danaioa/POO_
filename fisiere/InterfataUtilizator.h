@@ -9,12 +9,12 @@
 
 
 class InterfataUtilizator {
-private:
     std::unique_ptr<Client> client;
     bool trecePeste = false;
     int calorii{};
     double pret = 0;
     int id{};
+    int ok=0;
 
 public:
     InterfataUtilizator();

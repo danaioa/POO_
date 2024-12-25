@@ -8,7 +8,7 @@
 
 class ContPremium : public Cont {
     static constexpr double costCont = 20.0;
-    Obiectiv* obiectiv;  // Obiectivul utilizatorului
+    Obiectiv* obiectiv;
     std::unique_ptr<Client> client;
     int greutate;
     int inaltime;

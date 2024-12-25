@@ -154,3 +154,15 @@ Gen: Masculin
 Calorii: 1698
 Data expirare abonament: 21-01-2025
 ---------------------------
+ID: 3303
+Nume: dsf
+Telefon: sdf
+Adresa: fsd
+Varsta: 45
+Greutate: 154 kg
+Inaltime: 180 cm
+NrComenzi: 0
+Gen: Masculin
+Calorii: 1940
+Data expirare abonament: 25-01-2025
+---------------------------

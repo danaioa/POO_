@@ -1,22 +1,39 @@
-#ifndef PLANALIMENTAR_H
-#define PLANALIMENTAR_H
+#ifndef PLAN_ALIMENTAR_H
+#define PLAN_ALIMENTAR_H
 
-#include <string>
+#include <iostream>
+#include <fstream>
 #include <vector>
-#include <random>
+#include <string>
+#include <sstream>
+#include <ctime>
+#include <iomanip>
+#include <cstdlib>
 #include "MeniuItem.h"
 
+using namespace std;
+
 class PlanAlimentar {
+private:
     int idClient;
     int calorii;
 
 public:
     PlanAlimentar(int idClient, int caloriiDisponibile);
 
-    static std::string trim(const std::string& str);
-    static std::vector<MeniuItem> citesteProduseDinFisier(const std::string& fisier, const std::string& categorie);
-    static void amestecaProduse(std::vector<MeniuItem>& produse);
+    static string trim(const string& str);
+
+    static vector<MeniuItem> citesteProduseDinFisier(const string& fisier, const string& categorie);
+
+    static void amestecaProduse(vector<MeniuItem>& produse);
+
     void construiesteMeniu(int nrZile, bool alegereManuala = false) const;
+
+    int getCalorii() const { return calorii; }
+    int getIdClient() const { return idClient; }
 };
 
-#endif // PLANALIMENTAR_H
+string trim(const string& str);
+int getCaloriiById(int id);
+
+#endif // PLAN_ALIMENTAR_H
