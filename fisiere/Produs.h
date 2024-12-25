@@ -31,7 +31,8 @@ public:
     virtual ~Produs() = default;
 
     [[nodiscard]] int getPret() const;
-    [[nodiscard]] string getNume() const;
+    [[nodiscard]] const string& getNume() const;
+
 };
 
 #endif

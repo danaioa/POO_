@@ -20,6 +20,7 @@ int Produs::getPret() const {
     return pret;
 }
 
-string Produs::getNume() const {
+const string& Produs::getNume() const {
     return nume;
 }
+

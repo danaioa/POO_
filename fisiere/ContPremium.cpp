@@ -7,13 +7,11 @@
 
 ContPremium::ContPremium(std::unique_ptr<Client> clientPtr)
     : Cont(clientPtr->getId_Client(), clientPtr->getNume(), clientPtr->getTelefon(), clientPtr->getAdresa()),
-      obiectiv(nullptr), client(std::move(clientPtr)), greutate(0),  inaltime(0),  varsta(0), gen(0)  {}
-
+      obiectiv(nullptr), client(std::move(clientPtr)), greutate(0),  inaltime(0),  varsta(0), gen(0) {}
 
 ContPremium::ContPremium(int id, const std::string& nume, const std::string& telefon, const std::string& adresa)
-    : Cont(id, nume, telefon, adresa), obiectiv(nullptr),  client(std::make_unique<Client>(id, nume, telefon, adresa)),
-      greutate(0), inaltime(0), varsta(0), gen(0)  {}
-
+    : Cont(id, nume, telefon, adresa), obiectiv(nullptr), client(std::make_unique<Client>(id, nume, telefon, adresa)),
+      greutate(0), inaltime(0), varsta(0), gen(0) {}
 
 ContPremium::~ContPremium() {
     delete obiectiv;
@@ -64,8 +62,6 @@ Obiectiv* ContPremium::alegeObiectiv() {
     return obj;
 }
 
-
-
 std::unique_ptr<Cont> ContPremium::clone() const {
     auto cont = std::make_unique<ContPremium>(std::make_unique<Client>(*client));
     if (obiectiv) {
@@ -74,108 +70,73 @@ std::unique_ptr<Cont> ContPremium::clone() const {
     return cont;
 }
 
-/*
-[[maybe_unused]] void ContPremium::setDetaliiUtilizator(int greutate_, int inaltime_, int varsta_, int gen_) {
-    greutate = greutate_;
-    inaltime = inaltime_;
-    varsta = varsta_;
-    gen = gen_;
-}
-*/
+void ContPremium::rezervaMasa() {
+    try {
+        std::ifstream fisier("mese.txt");
+        if (!fisier.is_open()) {
+            throw ExceptieFisier("Nu s-a putut deschide fișierul mese.txt.");
+        }
 
-/*
-[[maybe_unused]]  void ContPremium::genereazaPlanAlimentar() const {
-    int calorii = getCaloriiById(client->getId_Client());
-    PlanAlimentar plan(client->getId_Client(), calorii);
-    int nrZile = 7;
-    plan.construiesteMeniu(nrZile, false);
-    std::cout << "Comanda va ajunge in jurul orei 18:00 la adresa din cont.\n";
-}
-*/
+        std::vector< std::pair<int, bool>> mese(5, { 0, false });
+        std::string linie;
+        int masaIndex = 0;
+        std::vector<std::string> ore = { "18:00 - 20:00", "20:00 - 22:00", "22:00 - 00:00" };
 
-void ContPremium::rezervaMasa()
- {
-        try {
-             std::ifstream fisier("mese.txt");
-            if (!fisier.is_open()) {
-                throw ExceptieFisier ("Nu s-a putut deschide fișierul mese.txt.");
+        while (getline(fisier, linie)) {
+            if (linie.find("rezervata") != std::string::npos) {
+                mese[masaIndex].second = true; // masa rezervata
+            }
+            masaIndex++;
+        }
+
+        int alegere;
+        bool intervalDisponibil = false;
+        while (!intervalDisponibil) {
+            std::cout << "Alege un interval orar pentru rezervare:\n";
+            for (size_t i = 0; i < ore.size(); ++i) {
+                std::cout << i + 1 << ". " << ore[i] << std::endl;
             }
 
-             std::vector< std::pair<int, bool>> mese(5, { 0, false });
-            string linie;
+            std::cin >> alegere;
 
-
-            int masaIndex = 0;
-             std::vector<string> ore = {
-                "18:00 - 20:00",
-                "20:00 - 22:00",
-                "22:00 - 00:00"
-            };
-
-
-            while (getline(fisier, linie)) {
-                if (linie.find("rezervata") != string::npos) {
-                    mese[masaIndex].second = true; // masa rezervata
-                }
-                masaIndex++;
+            if (alegere < 1 || alegere > 3) {
+                std::cout << "Optiune invalida. Te rog alege un interval valid.\n";
+                continue;
             }
 
+            int masaAleasa = -1;
+            for (size_t i = 0; i < mese.size(); ++i) {
+                if (!mese[i].second) {
+                    masaAleasa = i;
+                    break;
+                }
+            }
 
-            int alegere;
-            bool intervalDisponibil = false;
-            while (!intervalDisponibil) {
-                std::cout << "Alege un interval orar pentru rezervare:\n";
-                for (size_t i = 0; i < ore.size(); ++i) {
-                    std::cout << i + 1 << ". " << ore[i] << std::endl;
+            if (masaAleasa == -1) {
+                std::cout << "Nu mai sunt mese disponibile pentru acest interval.\n";
+                std::cout << "Te rugam sa alegi un alt interval.\n";
+            } else {
+                intervalDisponibil = true;
+                std::cout << "Ai ales masa " << masaAleasa + 1 << " pentru intervalul " << ore[alegere - 1] << ".\n";
+                mese[masaAleasa].second = true;
+
+                std::ofstream outFisier("mese.txt");
+                if (!outFisier.is_open()) {
+                    throw ExceptieFisier("Nu s-a putut deschide fișierul mese.txt pentru scriere.");
                 }
 
-                std:: cin >> alegere;
-
-
-                if (alegere < 1 || alegere > 3) {
-                     std::cout << "Optiune invalida. Te rog alege un interval valid.\n";
-                    continue;
-                }
-
-
-                size_t masaAleasa = -1;;
                 for (size_t i = 0; i < mese.size(); ++i) {
-                    if (!mese[i].second) {
-                        masaAleasa = i;
-                        break;
-                    }
+                    outFisier << "Masa " << i + 1 << " " << ore[i] << " este " << (mese[i].second ? "rezervata" : "disponibila") << "\n";
                 }
 
-                if (masaAleasa == -1) {
-                     std::cout << "Nu mai sunt mese disponibile pentru acest interval.\n";
-                     std::cout << "Te rugam sa alegi un alt interval.\n";
-                }
-                else {
-                    intervalDisponibil = true;
-
-                     std::cout << "Ai ales masa " << masaAleasa + 1 << " pentru intervalul " << ore[alegere - 1] << ".\n";
-                    mese[masaAleasa].second = true;
-
-
-                    std:: ofstream outFisier("mese.txt");
-                    if (!outFisier.is_open()) {
-                        throw ExceptieFisier ("Nu s-a putut deschide fișierul mese.txt pentru scriere.");
-                    }
-
-                    for (size_t i = 0; i < mese.size(); ++i) {
-                        outFisier << "Masa " << i + 1 << " " << ore[i] << " este " << (mese[i].second ? "rezervata" : "disponibila") << "\n";
-                    }
-
-
-                     std::cout << "\n--- Confirmare rezervare ---\n";
-                     std::cout << "Ati rezervat Masa " << masaAleasa + 1 << " pentru intervalul " << ore[alegere - 1] << ".\n";
-                     std::cout << "Masa va fi pregatita pana la sosirea dumneavoastra.\n";
-                     std::cout << "Va asteptam cu drag!\n";
-                }
+                std::cout << "\n--- Confirmare rezervare ---\n";
+                std::cout << "Ati rezervat Masa " << masaAleasa + 1 << " pentru intervalul " << ore[alegere - 1] << ".\n";
+                std::cout << "Masa va fi pregatita pana la sosirea dumneavoastra.\n";
+                std::cout << "Va asteptam cu drag!\n";
             }
-    }
-    catch (const ExceptieFisier & e) {
-         std::cout << "Eroare la rezervarea mesei: " << e.what() <<  std::endl;
+        }
+    } catch (const ExceptieFisier& e) {
+        std::cout << "Eroare la rezervarea mesei: " << e.what() << std::endl;
     }
 }
 
@@ -186,30 +147,25 @@ std::string ContPremium::trim(const std::string& str) {
 }
 
 int ContPremium::getCaloriiById(int id) {
-     std::ifstream fisier("Clienti.txt");
+    std::ifstream fisier("Clienti.txt");
     if (!fisier.is_open()) {
-         std::cout << "Eroare la deschiderea fisierului Clienti.txt!" <<  std::endl;
+        std::cout << "Eroare la deschiderea fisierului Clienti.txt!" << std::endl;
         return -1;
     }
 
-    string linie;
+    std::string linie;
     while (getline(fisier, linie)) {
-
-        if (linie.find("ID: ") == 0) {
-            int idFisier = stoi(linie.substr(4));
+        if (linie.starts_with("ID: ")) {
+            int idFisier = std::stoi(linie.substr(4));
             if (idFisier == id) {
-
                 while (getline(fisier, linie)) {
-                    if (linie.find("Calorii: ") == 0) {
-                        string caloriiStr = linie.substr(9);
+                    if (linie.starts_with("Calorii: ")) {
+                        std::string caloriiStr = linie.substr(9);
                         caloriiStr = trim(caloriiStr);
-
-
                         try {
-                            return stoi(caloriiStr);
-                        }
-                        catch (const ExceptieOptiuneInvalida &e) {
-                             std::cout << "Eroare la citirea caloriilor pentru clientul cu ID-ul " <<e.what()<< id <<  std::endl;
+                            return std::stoi(caloriiStr);
+                        } catch (const std::exception& e) {
+                            std::cout << "Eroare la citirea caloriilor: " << e.what() << std::endl;
                             return -1;
                         }
                     }
@@ -217,6 +173,5 @@ int ContPremium::getCaloriiById(int id) {
             }
         }
     }
-
     return -1;
 }

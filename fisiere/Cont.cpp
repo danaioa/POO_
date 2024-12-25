@@ -40,7 +40,7 @@ int Cont::citesteUltimulNumar(const std::string& filename, int prefix) {
     int ultimul_id = -1;
 
     while (std::getline(file, linie)) {
-        if (linie.find("ID:") == 0) {
+        if (linie.starts_with("ID:")) {
             try {
                 int id = std::stoi(linie.substr(4));
                 if (id / 100 == prefix) {
@@ -54,6 +54,7 @@ int Cont::citesteUltimulNumar(const std::string& filename, int prefix) {
     file.close();
     return ultimul_id;
 }
+
 
 int Cont::generareCod(int prefix) {
     int n = citesteUltimulNumar("Clienti.txt", prefix);

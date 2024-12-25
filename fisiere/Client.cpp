@@ -17,8 +17,15 @@ Client& Client::operator=(Client other) {
     std::swap(Telefon, other.Telefon);
     std::swap(Adresa, other.Adresa);
     std::swap(pret, other.pret);
-     return *this;
+    std::swap(Optiune, other.Optiune);
+    std::swap(varsta, other.varsta);
+    std::swap(gen, other.gen);
+    std::swap(inaltime, other.inaltime);
+    std::swap(greutate, other.greutate);
+    std::swap(NrComenzi, other.NrComenzi);
+    return *this;
 }
+
 
 int Client::getPret() const {
     return pret;
@@ -84,12 +91,12 @@ void Client::actualizeazaNRComanda(int id) {
     std::string continutFisier;
 
     while (std::getline(fisier, linie)) {
-        if (linie.find("ID: ") == 0) {
+        if (linie.starts_with("ID: ")) {
             int idFisier = std::stoi(linie.substr(4));
             if (idFisier == id) {
                 continutFisier += linie + "\n"; // ID
 
-                while (std::getline(fisier, linie) && linie.find("NrComenzi: ") != 0) {
+                while (std::getline(fisier, linie) && !linie.starts_with("NrComenzi: ")) {
                     continutFisier += linie + "\n";
                 }
 
@@ -102,6 +109,7 @@ void Client::actualizeazaNRComanda(int id) {
                 break;
             }
         }
+
     }
 
     fisier.close();

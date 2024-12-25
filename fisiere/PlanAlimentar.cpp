@@ -146,19 +146,18 @@ int getCaloriiById(int id) {
 
     string linie;
     while (getline(fisier, linie)) {
-        if (linie.find("ID: ") == 0) {
+        if (linie.starts_with("ID: ")) {
             int idFisier = stoi(linie.substr(4));
 
             if (idFisier == id) {
                 while (getline(fisier, linie)) {
-                    if (linie.find("Calorii: ") == 0) {
+                    if (linie.starts_with("Calorii: ")) {
                         string caloriiStr = linie.substr(9);
                         caloriiStr = trim(caloriiStr);
 
                         try {
                             return stoi(caloriiStr);
-                        }
-                        catch (const invalid_argument& ) {
+                        } catch (const invalid_argument&) {
                             cerr << "Eroare la citirea caloriilor pentru clientul cu ID-ul " << id << endl;
                             return -1;
                         }
