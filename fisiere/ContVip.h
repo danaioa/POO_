@@ -27,12 +27,12 @@ public:
             int nrComenzi = 0, OptiuneServire optiune = OptiuneServire::InRestaurant, int pret = 0);
 
     static double getCostCont();
-    void setDetaliiUtilizator(int greutate_, int inaltime_, int varsta_, int gen_);
+    //void setDetaliiUtilizator(int greutate_, int inaltime_, int varsta_, int gen_);
     double costlivrare() override;
     void setObiectiv(Obiectiv* obj);
     static Obiectiv* alegeObiectiv();
     ///[[nodiscard]] int calculeazaNecesarCaloric() const;
-    void genereazaPlanAlimentar() const;
+   /// void genereazaPlanAlimentar() const;
     static void rezervaMasa();
     void alegeSport();
     [[nodiscard]] std::string getSportString() const;

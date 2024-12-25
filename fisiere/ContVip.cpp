@@ -18,12 +18,12 @@ double ContVip::getCostCont() {
     return costCont;
 }
 
-void ContVip::setDetaliiUtilizator(int greutate_, int inaltime_, int varsta_, int gen_) {
+/*void ContVip::setDetaliiUtilizator(int greutate_, int inaltime_, int varsta_, int gen_) {
     greutate = greutate_;
     inaltime = inaltime_;
     varsta = varsta_;
     gen = gen_;
-}
+}*/
 
 double ContVip::costlivrare() {
     std::random_device rd;
@@ -66,14 +66,14 @@ int ContVip::calculeazaNecesarCaloric() const {
 }
 */
 
-void ContVip::genereazaPlanAlimentar() const {
+/*void ContVip::genereazaPlanAlimentar() const {
     int calorii = getCaloriiById(client->getId_Client());
     PlanAlimentar plan(client->getId_Client(), calorii);
 
     int nrZile = 7;
     plan.construiesteMeniu(nrZile, false);
     std::cout << "Comanda va ajunge in jurul orei 18:00 la adresa din cont.\n";
-}
+}*/
 
 void ContVip::rezervaMasa() {
     try {
