@@ -39,9 +39,6 @@ public:
     [[nodiscard]] int getNrComenzi() const;
     [[nodiscard]] OptiuneServire getOptiuneServire() const;
 
-   [[maybe_unused]] void setNume(const std::string& nume);
-   [[maybe_unused]] void setTelefon(const std::string& telefon);
-    [[maybe_unused]] void setAdresa(const std::string& adresa);
     void setOptiuneServire(OptiuneServire optiune);
 
     static void actualizeazaNRComanda(int id);

@@ -68,17 +68,7 @@ OptiuneServire Client::getOptiuneServire() const {
     return Optiune;
 }
 
-[[maybe_unused]] void Client::setNume(const std::string& nume) {
-    this->Nume = nume;
-}
 
-[[maybe_unused]] void Client::setTelefon(const std::string& telefon) {
-    this->Telefon = telefon;
-}
-
-[[maybe_unused]] void Client::setAdresa(const std::string& adresa) {
-    this->Adresa = adresa;
-}
 
 void Client::setOptiuneServire(OptiuneServire optiune) {
     Optiune = optiune;
