@@ -22,7 +22,6 @@
 
 InterfataUtilizator::InterfataUtilizator() : client(nullptr) {}
 
-
 void InterfataUtilizator::pornire() {
     cout << "      Bine ati venit la HELLO FRESH!\n";
     cout << "     -------------------------------\n";
@@ -272,11 +271,11 @@ int InterfataUtilizator::getCaloriiById(int id) {
 
     std::string linie;
     while (std::getline(fisier, linie)) {
-        if (linie.find("ID: ") == 0) {
+        if (linie.starts_with("ID: ")) {
             int idFisier = std::stoi(linie.substr(4));
             if (idFisier == id) {
                 while (std::getline(fisier, linie)) {
-                    if (linie.find("Calorii: ") == 0) {
+                    if (linie.starts_with("Calorii: ")) {
                         std::string caloriiStr = linie.substr(9);
                         caloriiStr = trim(caloriiStr);
 
@@ -295,7 +294,6 @@ int InterfataUtilizator::getCaloriiById(int id) {
 
     return -1;
 }
-
 
 void InterfataUtilizator::afiseazaTipMeniu() {
     std::cout << "\nAlege tipul de produs:\n";
