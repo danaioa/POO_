@@ -29,9 +29,6 @@ public:
     [[nodiscard]] int getPret() const;
     void setPret(double cost);
     [[nodiscard]] int getVarsta() const;
-    [[nodiscard]] const std::string& getNume() const;
-    [[nodiscard]] const std::string& getTelefon() const;
-    [[nodiscard]] const std::string& getAdresa() const;
     [[nodiscard]] int getGen() const;
     [[nodiscard]] int getInaltime() const;
     [[nodiscard]] int getGreutate() const;

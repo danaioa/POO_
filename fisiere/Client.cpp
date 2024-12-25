@@ -32,17 +32,6 @@ int Client::getVarsta() const {
     return varsta;
 }
 
-[[maybe_unused]] const std::string& Client::getNume() const {
-    return Nume;
-}
-
-[[maybe_unused]] const std::string& Client::getTelefon() const {
-    return Telefon;
-}
-
-[[maybe_unused]] const std::string& Client::getAdresa() const {
-    return Adresa;
-}
 
 int Client::getGen() const {
     return gen;
