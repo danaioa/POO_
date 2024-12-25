@@ -211,19 +211,19 @@ bool InterfataUtilizator::verificaId(int id, std::unique_ptr<Client>& client) {
 
     std::string linie;
     while (std::getline(fisier, linie)) {
-        if (linie.find("ID: ") == 0) {
+        if (linie.starts_with("ID: ")) {
             int idFisier = std::stoi(linie.substr(4));
             if (idFisier == id) {
                 std::string nume, telefon, adresa;
                 int nrComenzi = 0;
                 std::getline(fisier, linie);
-                if (linie.find("Nume: ") == 0) nume = linie.substr(6);
+                if (linie.starts_with("Nume: ")) nume = linie.substr(6);
                 std::getline(fisier, linie);
-                if (linie.find("Telefon: ") == 0) telefon = linie.substr(9);
+                if (linie.starts_with("Telefon: ")) telefon = linie.substr(9);
                 std::getline(fisier, linie);
-                if (linie.find("Adresa: ") == 0) adresa = linie.substr(8);
+                if (linie.starts_with("Adresa: ")) adresa = linie.substr(8);
                 std::getline(fisier, linie);
-                if (linie.find("NrComenzi: ") == 0) nrComenzi = std::stoi(linie.substr(11));
+                if (linie.starts_with("NrComenzi: ")) nrComenzi = std::stoi(linie.substr(11));
 
                 client = std::make_unique<Client>(idFisier, nume, telefon, adresa, nrComenzi);
                 return true;
@@ -234,39 +234,6 @@ bool InterfataUtilizator::verificaId(int id, std::unique_ptr<Client>& client) {
     return false;
 }
 
-/*[maybe_unused]] void InterfataUtilizator::afiseazaOptiuneServire(const std::unique_ptr<Client>& client, InterfataUtilizator& interfata) {
-    int optiuneServire = 0;
-
-    while (true) {
-        try {
-            std::cout << "Alege optiunea de servire:\n";
-            std::cout << "1. La restaurant\n";
-            std::cout << "2. La pachet\n";
-            std::cout << "Alegere: ";
-            std::cin >> optiuneServire;
-
-            if (std::cin.fail()) {
-                throw ProdusInvalidException("Introduceti o valoare valida.");
-            }
-
-            switch (optiuneServire) {
-                case 1:
-                    client->setOptiuneServire(InRestaurant);
-                if (client->getId_Client() / 100 == 44) {
-                    ContVip::rezervaMasa();
-                }
-                return;
-                case 2:
-                    client->setOptiuneServire(LaPachet);
-                return;
-                default:
-                    throw ProdusInvalidException("Optiune invalida.");
-            }
-        } catch (const ProdusInvalidException& e) {
-            std::cout << e.what() << std::endl;
-        }
-    }
-}*/
 
 void InterfataUtilizator::costuriInfunctieDeID(int id, double& pret) {
     if(id / 100 == 11) {
