@@ -10,16 +10,17 @@ public:
     float pret;
     std::string categorie;
 
-
     MeniuItem(std::string n, int c, float p, std::string cat);
 
     MeniuItem(MeniuItem&& other) noexcept;
 
     MeniuItem& operator=(MeniuItem&& other) noexcept;
 
+
+    MeniuItem(const MeniuItem& other)=default;
+    MeniuItem& operator=(const MeniuItem& other)=default;
+
     friend void swap(MeniuItem& lhs, MeniuItem& rhs) noexcept;
-    MeniuItem(const MeniuItem& other) = delete;
-    MeniuItem& operator=(const MeniuItem& other) = delete;
 };
 
 #endif // MENIUITEM_H

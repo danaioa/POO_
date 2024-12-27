@@ -17,6 +17,8 @@ MeniuItem& MeniuItem::operator=(MeniuItem&& other) noexcept {
     return *this;
 }
 
+
+
 void swap(MeniuItem& a, MeniuItem& b) noexcept{
     using std::swap;
     swap(a.nume, b.nume);
