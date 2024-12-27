@@ -11,7 +11,7 @@ public:
 
     [[nodiscard]] std::string getObiectivString() const override;
 
-    [[nodiscard]] int calculeazaCalorii(int greutate, int inaltime, int varsta, int gen) const override;
+    [[nodiscard]] static int calculeazaCalorii(int greutate,  int varsta, int gen) ;
 };
 
 #endif // CRESTERE_PERFORMANTA_H
