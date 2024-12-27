@@ -51,13 +51,13 @@ void InterfataUtilizator::pornire() {
                             if (generare == 1) {
                                 calorii = getCaloriiById(client->getId_Client());
                                 PlanAlimentar plan(client->getId_Client(), calorii);
-                                plan.construiesteMeniu(nrzile, false);
+                                plan.construiesteMeniu(nrzile);
                                 cout << "Comanda va ajunge in jurul orei 18:00 la adresa din cont.\n";
                                 Client::actualizeazaNRComanda(id);
                             } else {
                                 calorii = getCaloriiById(client->getId_Client());
                                 PlanAlimentar plan(client->getId_Client(), calorii);
-                                plan.construiesteMeniu(nrzile, true);
+                                plan.construiesteMeniu(nrzile);
                                 cout << "---Comanda a fost plasata-----\n";
                                 cout << "---Va ajunge in jurul orei 18:00 la adresa din cont";
                             }

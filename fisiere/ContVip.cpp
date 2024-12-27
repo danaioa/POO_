@@ -85,7 +85,7 @@ void ContVip::rezervaMasa() {
         std::vector<std::pair<int, bool>> mese(5, { 0, false });
         std::string linie;
 
-        int masaIndex = 0;
+        size_t masaIndex = 0;
         std::vector<std::string> ore = {"18:00 - 20:00", "20:00 - 22:00", "22:00 - 00:00"};
 
         while (std::getline(fisier, linie)) {
@@ -110,8 +110,8 @@ void ContVip::rezervaMasa() {
                 continue;
             }
 
-            size_t masaAleasa = -1;
-            for (size_t i = 0; i < mese.size(); ++i) {
+            auto masaAleasa = static_cast<size_t>(-1);
+            for ( int  i = 0; i < mese.size(); ++i) {
                 if (!mese[i].second) {
                     masaAleasa = i;
                     break;
@@ -276,10 +276,10 @@ void ContVip::alegeZiSiOra() {
 void ContVip::verificaLocuriDisponibile() const {
     std::vector<int> locuriDisponibile = {5, 1, 3, 2, 1, 2};
 
-    int indexOra = -1;
+    auto indexOra = static_cast<size_t>(-1);
     std::vector<std::string> oreDisponibile = {"08:00", "10:00", "12:00", "14:00", "16:00", "18:00"};
 
-    for (int i = 0; i < oreDisponibile.size(); ++i) {
+   for (size_t i = 0; i < oreDisponibile.size(); ++i) {
         if (oraAleasaFinala == oreDisponibile[i]) {
             indexOra = i;
             break;
