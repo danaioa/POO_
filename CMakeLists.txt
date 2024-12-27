@@ -92,6 +92,10 @@ add_executable(${PROJECT_NAME}
         fisiere/InterfataUtilizator.cpp
         fisiere/OptiuneServire.h
         fisiere/MeniuItem.cpp
+        fisiere/ObiectivFactory.cpp
+        fisiere/ObiectivFactory.h
+        fisiere/CresterePerformanta.cpp
+        fisiere/CresterePerformanta.h
 )
 
 include(cmake/CompilerFlags.cmake)

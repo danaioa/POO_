@@ -1,0 +1,24 @@
+ID: 3302
+Nume: dana
+Telefon: 07545256
+Adresa: strada y nr x
+Varsta: 54
+Greutate: 168 kg
+Inaltime: 190 cm
+NrComenzi: 1
+Gen: Masculin
+Calorii: 2098
+Data expirare abonament: 27-01-2025
+---------------------------
+ID: 3303
+Nume: sd
+Telefon: 0727485868
+Adresa: strada y nr u 
+Varsta: 15
+Greutate: 45 kg
+Inaltime: 152 cm
+NrComenzi: 0
+Gen: Feminin
+Calorii: 405
+Data expirare abonament: 27-01-2025
+---------------------------

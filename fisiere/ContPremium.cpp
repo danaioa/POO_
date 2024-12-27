@@ -4,6 +4,7 @@
 #include "ContPremium.h"
 #include "Exceptii.h"
 #include "PlanAlimentar.h"
+#include "ObiectivFactory.h"
 
 ContPremium::ContPremium(std::unique_ptr<Client> clientPtr)
     : Cont(clientPtr->getId_Client(), clientPtr->getNume(), clientPtr->getTelefon(), clientPtr->getAdresa()),
@@ -50,26 +51,31 @@ Obiectiv* ContPremium::alegeObiectiv() {
     std::cout << "1. Slabire\n";
     std::cout << "2. Crestere masa musculara\n";
     std::cout << "3. Mentinere\n";
+    std::cout << "4. Crestere Performanta sesiune \n";
     std::cout << "Alegere: ";
     std::cin >> optiune;
 
-    Obiectiv* obj = nullptr;
+    std::string tipObiectiv;
     switch (optiune) {
         case 1:
-            obj = new Slabire();
-            break;
+            tipObiectiv = "Slabire";
+        break;
         case 2:
-            obj = new MasaMusculara();
-            break;
+            tipObiectiv = "MasaMusculara";
+        break;
         case 3:
-            obj = new Mentinere();
-            break;
+            tipObiectiv = "Mentinere";
+        break;
+        case 4:
+            tipObiectiv = "CresterePerformanta";
+        break;
         default:
             throw ExceptieOptiuneInvalida();
     }
 
-    return obj;
+    return ObiectivFactory::creareObiectiv(tipObiectiv).release();
 }
+
 
 std::unique_ptr<Cont> ContPremium::clone() const {
     auto cont = std::make_unique<ContPremium>(std::make_unique<Client>(*client));
