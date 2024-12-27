@@ -7,14 +7,18 @@
 
 ContPremium::ContPremium(std::unique_ptr<Client> clientPtr)
     : Cont(clientPtr->getId_Client(), clientPtr->getNume(), clientPtr->getTelefon(), clientPtr->getAdresa()),
-      obiectiv(nullptr), greutate(0), inaltime(0), varsta(0), gen(0) {
-    client = std::move(clientPtr);
-}
+      obiectiv(nullptr),
+      clientPremium(std::move(clientPtr)),
+      greutate(0), inaltime(0), varsta(0), gen(0) { }
+
 
 ContPremium::ContPremium(int id, const std::string& nume, const std::string& telefon, const std::string& adresa)
-    : Cont(id, nume, telefon, adresa), obiectiv(nullptr), greutate(0), inaltime(0), varsta(0), gen(0) {
-    client = std::make_unique<Client>(id, nume, telefon, adresa);
-}
+    : Cont(id, nume, telefon, adresa),
+      obiectiv(nullptr),
+      clientPremium(std::make_unique<Client>(id, nume, telefon, adresa)),
+      greutate(0), inaltime(0), varsta(0), gen(0) { }
+
+
 
 
 
@@ -111,14 +115,13 @@ void ContPremium::rezervaMasa() {
                 continue;
             }
 
-            size_t masaAleasa = -1;
+            int masaAleasa = -1;
             for (size_t i = 0; i < mese.size(); ++i) {
                 if (!mese[i].second) {
-                    masaAleasa = i;
+                    masaAleasa = static_cast<int>(i);
                     break;
                 }
             }
-
 
             if (masaAleasa == -1) {
                 std::cout << "Nu mai sunt mese disponibile pentru acest interval.\n";

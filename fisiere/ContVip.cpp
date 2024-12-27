@@ -287,7 +287,6 @@ void ContVip::verificaLocuriDisponibile() const {
     }
 
     if (indexOra != -1 && locuriDisponibile[indexOra] > 0) {
-        locuriDisponibile[indexOra]--;
         std::cout << "Locuri disponibile pentru ora aleasa.\n";
     } else {
         std::cout << "Nu mai sunt locuri disponibile pentru ora aleasa.\n";
