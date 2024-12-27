@@ -8,15 +8,13 @@
 ContPremium::ContPremium(std::unique_ptr<Client> clientPtr)
     : Cont(clientPtr->getId_Client(), clientPtr->getNume(), clientPtr->getTelefon(), clientPtr->getAdresa()),
       obiectiv(nullptr),
-      clientPremium(std::move(clientPtr)),
-      greutate(0), inaltime(0), varsta(0), gen(0) { }
+      clientPremium(std::move(clientPtr)){ }
 
 
 ContPremium::ContPremium(int id, const std::string& nume, const std::string& telefon, const std::string& adresa)
     : Cont(id, nume, telefon, adresa),
       obiectiv(nullptr),
-      clientPremium(std::make_unique<Client>(id, nume, telefon, adresa)),
-      greutate(0), inaltime(0), varsta(0), gen(0) { }
+      clientPremium(std::make_unique<Client>(id, nume, telefon, adresa)){ }
 
 
 

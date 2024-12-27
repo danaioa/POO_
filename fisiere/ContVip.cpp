@@ -111,14 +111,14 @@ void ContVip::rezervaMasa() {
             }
 
             auto masaAleasa = static_cast<size_t>(-1);
-            for ( int  i = 0; i < mese.size(); ++i) {
+            for (size_t i = 0; i < mese.size(); ++i) {
                 if (!mese[i].second) {
                     masaAleasa = i;
                     break;
                 }
             }
 
-            if (masaAleasa == -1) {
+           if (masaAleasa == static_cast<std::vector<std::pair<int, bool>>::size_type>(-1)){
                 std::cout << "Nu mai sunt mese disponibile pentru acest interval.\n";
                 std::cout << "Te rugam sa alegi un alt interval.\n";
             } else {
@@ -286,7 +286,8 @@ void ContVip::verificaLocuriDisponibile() const {
         }
     }
 
-    if (indexOra != -1 && locuriDisponibile[indexOra] > 0) {
+  if (indexOra != static_cast<std::vector<std::pair<int, bool>>::size_type>(-1) && locuriDisponibile[indexOra] > 0)
+ {
         std::cout << "Locuri disponibile pentru ora aleasa.\n";
     } else {
         std::cout << "Nu mai sunt locuri disponibile pentru ora aleasa.\n";

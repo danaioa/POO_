@@ -10,10 +10,10 @@ class ContPremium : public Cont {
     static constexpr double costCont = 20.0;
     Obiectiv* obiectiv;
     std::unique_ptr<Client> clientPremium;
-    int greutate;
+    /*int greutate;
     int inaltime;
     int varsta;
-    int gen;
+    int gen;*/
 
 public:
     explicit ContPremium(std::unique_ptr<Client> clientPtr);
