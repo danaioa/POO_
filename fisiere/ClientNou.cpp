@@ -153,7 +153,7 @@ void ClientNou::salveazaInFisier(const string& fisier) const {
         << "Gen: " << (gen == 1 ? "Masculin" : "Feminin") << "\n";
 
     if (caloriiZilnice > 0) {
-        out << "Calorii: " << caloriiZilnice << "\n";
+        out << "Calorii: " << caloriiZilnice << "\n" ;
     } else {
         out << "Calorii: -\n";
     }

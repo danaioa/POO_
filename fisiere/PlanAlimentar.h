@@ -23,8 +23,7 @@ public:
 
     void construiesteMeniu(int nrZile) const;
 
-    //int getCalorii() const { return calorii; }
-    //[[nodiscard]] int getIdClient() const { return idClient; }
+
 };
 
 string trim(const string& str);

@@ -142,6 +142,7 @@ void ContVip::rezervaMasa() {
                 std::cout << "Va asteptam cu drag!\n";
             }
         }
+
     }
     catch (const ExceptieFisier& e) {
         std::cout << "Eroare la rezervarea mesei: " << e.what() << std::endl;

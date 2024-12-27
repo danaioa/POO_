@@ -2,7 +2,7 @@
 #define SPORT_H
 
 enum class Sport {
-    Sala,
+      Sala,
     Inot,
     Yoga,
     Box
