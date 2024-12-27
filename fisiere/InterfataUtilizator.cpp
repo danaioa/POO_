@@ -131,7 +131,7 @@ void InterfataUtilizator::afiseazaComanda(MeniuPrincipal& meniu, const std::uniq
             meniu.citesteProduseDinFisier("meniu.txt");
             break;
         case 2:
-            meniu.citesteProduseDinFisier("meniuBar.txt");
+            meniu.citesteProduseDinFisier("meniuBar");
             break;
         case 3:
             meniu.citesteProduseDinFisier("meniuDesert.txt");
