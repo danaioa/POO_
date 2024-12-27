@@ -99,7 +99,7 @@ void ContVip::rezervaMasa() {
         bool intervalDisponibil = false;
         while (!intervalDisponibil) {
             std::cout << "Alege un interval orar pentru rezervare:\n";
-            for (int i = 0; i < ore.size(); ++i) {
+           for (size_t i = 0; i < ore.size(); ++i) {
                 std::cout << i + 1 << ". " << ore[i] << std::endl;
             }
 
@@ -110,8 +110,8 @@ void ContVip::rezervaMasa() {
                 continue;
             }
 
-            int masaAleasa = -1;
-            for (int i = 0; i < mese.size(); ++i) {
+            size_t masaAleasa = -1;
+            for (size_t i = 0; i < mese.size(); ++i) {
                 if (!mese[i].second) {
                     masaAleasa = i;
                     break;
@@ -132,7 +132,7 @@ void ContVip::rezervaMasa() {
                     throw ExceptieFisier("Nu s-a putut deschide fișierul mese.txt pentru scriere.");
                 }
 
-                for (int i = 0; i < mese.size(); ++i) {
+                for (size_t i = 0; i < mese.size(); ++i) {
                     outFisier << "Masa " << i + 1 << " " << ore[i] << " este " << (mese[i].second ? "rezervata" : "disponibila") << "\n";
                 }
 
@@ -242,10 +242,10 @@ void ContVip::alegeZiSiOra() {
         std::cout << i + 1 << ". " << zileDisponibile[i] << std::endl;
     }
 
-    int ziAlesa;
+    size_t ziAlesa;
     std::cin >> ziAlesa;
 
-    if (ziAlesa < 1 || ziAlesa > zileDisponibile.size()) {
+    if (ziAlesa < 1 || ziAlesa >= zileDisponibile.size()) {
         std::cout << "Ziua aleasa este invalida.\n";
         return;
     }
@@ -258,10 +258,10 @@ void ContVip::alegeZiSiOra() {
     }
 
 
-    int oraAleasa;
+    size_t oraAleasa;
     std::cin >> oraAleasa;
 
-    if (oraAleasa < 1 || oraAleasa > oreDisponibile.size()) {
+    if (oraAleasa < 1 || oraAleasa >= oreDisponibile.size()) {
         std::cout << "Ora aleasă este invalidă.\n";
         return;
     }

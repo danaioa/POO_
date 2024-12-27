@@ -52,7 +52,7 @@ void PlanAlimentar::amestecaProduse(std::vector<MeniuItem>& produse) {
     }
 }
 
-void PlanAlimentar::construiesteMeniu(int nrZile, bool alegereManuala) const {
+void PlanAlimentar::construiesteMeniu(int nrZile) const {
     vector<MeniuItem> produseMicDejun = citesteProduseDinFisier("micdejun.txt", "MicDejun");
     vector<MeniuItem> produsePranz = citesteProduseDinFisier("pranz.txt", "Pranz");
     vector<MeniuItem> produseCina = citesteProduseDinFisier("cina.txt", "Cina");

@@ -21,7 +21,7 @@ public:
 
     static void amestecaProduse(vector<MeniuItem>& produse);
 
-    void construiesteMeniu(int nrZile, bool alegereManuala = false) const;
+    void construiesteMeniu(int nrZile) const;
 
     //int getCalorii() const { return calorii; }
     //[[nodiscard]] int getIdClient() const { return idClient; }
