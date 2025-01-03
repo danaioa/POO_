@@ -4,39 +4,24 @@
 #include <stdexcept>
 #include <string>
 
-class ExceptieFitness : public std::exception {
-protected:
-    std::string mesaj;
-
+class ExceptieGreutateInvalida : public std::runtime_error {
 public:
-    explicit ExceptieFitness(const std::string& msg) : mesaj(msg) {}
-    virtual const char* what() const noexcept override {
-        return mesaj.c_str();
-    }
+    ExceptieGreutateInvalida() : std::runtime_error("Greutatea trebuie sa fie mai mare decat 0.") {}
 };
 
-class ExceptieGreutateInvalida : public ExceptieFitness {
+class ExceptieInaltimeInvalida : public std::runtime_error {
 public:
-    explicit ExceptieGreutateInvalida(const std::string& msg = "Greutate invalida! Greutatea trebuie sa fie mai mare decat 0.")
-        : ExceptieFitness(msg) {}
+    ExceptieInaltimeInvalida() : std::runtime_error("Inaltimea trebuie sa fie intre 50 si 250 cm.") {}
 };
 
-class ExceptieInaltimeInvalida : public ExceptieFitness {
+class ExceptieVarstaInvalida : public std::runtime_error {
 public:
-    explicit ExceptieInaltimeInvalida(const std::string& msg = "Inaltime invalida! Inaltimea trebuie sa fie intre 50 si 250 cm.")
-        : ExceptieFitness(msg) {}
+    ExceptieVarstaInvalida() : std::runtime_error("Varsta trebuie sa fie mai mare decat 0.") {}
 };
 
-class ExceptieVarstaInvalida : public ExceptieFitness {
+class ExceptieGenInvalid : public std::runtime_error {
 public:
-    explicit ExceptieVarstaInvalida(const std::string& msg = "Varsta invalida! Varsta trebuie sa fie un numar pozitiv.")
-        : ExceptieFitness(msg) {}
-};
-
-class ExceptieGenInvalid : public ExceptieFitness {
-public:
-    explicit ExceptieGenInvalid(const std::string& msg = "Gen invalid! Genul trebuie sa fie 1 (masculin) sau 0 (feminin).")
-        : ExceptieFitness(msg) {}
+    ExceptieGenInvalid() : std::runtime_error("Genul trebuie sa fie 0 (feminin) sau 1 (masculin).") {}
 };
 
 #endif // EXCEPTIEFITNESS_H

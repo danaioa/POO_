@@ -5,18 +5,16 @@
 
 using std::string;
 
-
 class Obiectiv {
 public:
     virtual ~Obiectiv() = default;
 
-
     [[nodiscard]] virtual string getObiectivString() const = 0;
-
-
     [[nodiscard]] virtual int calculeazaCalorii(int greutate, int inaltime, int varsta, int gen) const = 0;
-};
 
+protected:
+    static void valideazaDate(int greutate, int inaltime, int varsta, int gen) ;
+};
 
 class Slabire : public Obiectiv {
 public:
@@ -24,20 +22,17 @@ public:
     [[nodiscard]] int calculeazaCalorii(int greutate, int inaltime, int varsta, int gen) const override;
 };
 
-
 class MasaMusculara : public Obiectiv {
 public:
     [[nodiscard]] string getObiectivString() const override;
     [[nodiscard]] int calculeazaCalorii(int greutate, int inaltime, int varsta, int gen) const override;
 };
 
-
 class Mentinere : public Obiectiv {
 public:
     [[nodiscard]] string getObiectivString() const override;
     [[nodiscard]] int calculeazaCalorii(int greutate, int inaltime, int varsta, int gen) const override;
 };
-
 
 class Definire : public Obiectiv {
 public:
