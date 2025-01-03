@@ -96,6 +96,7 @@ add_executable(${PROJECT_NAME}
         fisiere/ObiectivFactory.h
         fisiere/CresterePerformanta.cpp
         fisiere/CresterePerformanta.h
+        fisiere/ExceptieFitness.h
 )
 
 include(cmake/CompilerFlags.cmake)

@@ -30,8 +30,6 @@ void InterfataUtilizator::pornire() {
         if (!trecePeste) {
             cout << "Introduceti ID-ul: ";
             std::cin >> id;
-
-            try {
                 if (verificaId(id, client)) {
                     cout << "ID valid! Puteti comanda mancare.\n";
                     if (id / 100 == 33 || id / 100 == 44) {
@@ -74,7 +72,6 @@ void InterfataUtilizator::pornire() {
                         cout << "Alegere: ";
                          std::cin >> optiuneServire;
 
-                        try {
                             switch (optiuneServire) {
                             case 1: {
                                 client->setOptiuneServire(InRestaurant);
@@ -89,10 +86,6 @@ void InterfataUtilizator::pornire() {
                             default:
                                 throw ExceptieOptiuneInvalida("Optiune invalida.");
                             }
-                        } catch (const ExceptieOptiuneInvalida& e) {
-                            cout << e.what() << endl;
-                            continue;
-                        }
                     }
 
                     MeniuPrincipal meniu;
@@ -102,9 +95,6 @@ void InterfataUtilizator::pornire() {
                     afiseazaOptiuni(trecePeste);
                 }
 
-            } catch (const ExceptieFisier& e) {
-                cout << "Eroare la citirea fisierului: " << e.what() << endl;
-            }
         } else {
 
             client = make_unique<Client>(-1, "Client fara cont", "Necunoscut", "Necunoscut");

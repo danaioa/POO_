@@ -55,26 +55,9 @@ Obiectiv* ContPremium::alegeObiectiv() {
     std::cout << "Alegere: ";
     std::cin >> optiune;
 
-    std::string tipObiectiv;
-    switch (optiune) {
-        case 1:
-            tipObiectiv = "Slabire";
-        break;
-        case 2:
-            tipObiectiv = "MasaMusculara";
-        break;
-        case 3:
-            tipObiectiv = "Mentinere";
-        break;
-        case 4:
-            tipObiectiv = "CresterePerformanta";
-        break;
-        default:
-            throw ExceptieOptiuneInvalida();
-    }
-
-    return ObiectivFactory::creareObiectiv(tipObiectiv).release();
+    return ObiectivFactory::creareObiectivDupaOptiune(optiune);
 }
+
 
 
 std::unique_ptr<Cont> ContPremium::clone() const {
