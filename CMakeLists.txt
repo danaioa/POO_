@@ -98,7 +98,6 @@ add_executable(${PROJECT_NAME}
         fisiere/CresterePerformanta.h
         fisiere/ExceptieFitness.h
         fisiere/CalculeazaNivelulStresului.h
-        fisiere/CalculeazaNivelulStresului.cpp
 )
 
 include(cmake/CompilerFlags.cmake)
