@@ -4,6 +4,10 @@
 #include <algorithm>
 
 void Obiectiv::valideaza(int greutate, int inaltime, int varsta, int gen) const {
+    (void)greutate;
+    (void)inaltime;
+    (void)varsta;
+    (void)gen;
 }
 
 void Obiectiv::valideazaDate(int greutate, int inaltime, int varsta, int gen)  {
@@ -38,7 +42,7 @@ std::string MasaMusculara::getObiectivString() const {
 }
 
 int MasaMusculara::calculeazaCalorii(int greutate, int inaltime, int varsta, int gen) const {
-    valideaza(greutate, inaltime, varsta, gen);
+   valideaza(greutate, inaltime, varsta, gen);
     int caloriiBaza = static_cast<int>(std::round(10 * greutate + 6.25 * inaltime - 5 * varsta));
     int calorii = gen == 1 ? caloriiBaza + 500 : caloriiBaza + 400;
     return std::max(calorii, 0);
@@ -49,7 +53,7 @@ std::string Mentinere::getObiectivString() const {
 }
 
 int Mentinere::calculeazaCalorii(int greutate, int inaltime, int varsta, int gen) const {
-    valideaza(greutate, inaltime, varsta, gen);
+   valideaza(greutate, inaltime, varsta, gen);
     int caloriiBaza = static_cast<int>(std::round(10 * greutate + 6.25 * inaltime - 5 * varsta));
     int calorii = gen == 1 ? caloriiBaza : caloriiBaza - 100;
     return std::max(calorii, 0);
@@ -60,7 +64,7 @@ std::string Definire::getObiectivString() const {
 }
 
 int Definire::calculeazaCalorii(int greutate, int inaltime, int varsta, int gen) const {
-    valideaza(greutate, inaltime, varsta, gen);
+   valideaza(greutate, inaltime, varsta, gen);
     int caloriiBaza = static_cast<int>(std::round(10 * greutate + 6.25 * inaltime - 5 * varsta));
     int calorii = gen == 1 ? caloriiBaza - 500 : caloriiBaza - 300;
     return std::max(calorii, 0);
