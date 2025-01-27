@@ -52,7 +52,7 @@ void InterfataUtilizator::pornire() {
                 }
 
             }
-            else if(opt!=1)
+            else if(opt==2)
 
             {
                 cout << "Introduceti ID-ul: ";

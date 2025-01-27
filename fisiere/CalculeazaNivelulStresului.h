@@ -34,7 +34,7 @@ public:
 
         if (scorStres < 30) {
             cout << "Nivel de stres: Mic (Recomandare: Relaxeaza-te si organizeaza-te!)" << endl;
-        } else if (scorStres >= 30 && scorStres <= 60) {
+        } else if ( scorStres < 60) {
             cout << "Nivel de stres: Mediu (Recomandare: Fii concentrat si planifica-ti timpul!)" << endl;
         } else {
             cout << "Nivel de stres: Mare (Recomandare: Ia o pauza si incearca sa-ti controlezi emotiile!)" << endl;
