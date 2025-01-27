@@ -18,13 +18,13 @@ public:
 class ExceptieFisier : public ExceptieGenerala {
 public:
     explicit ExceptieFisier(const std::string& fisier)
-        : ExceptieGenerala("Eroare: Nu s-a putut deschide fișierul \"" + fisier + "\".") {}
+        : ExceptieGenerala("Eroare: Nu s-a putut deschide fisierul \"" + fisier + "\".") {}
 };
 
 class ExceptieOptiuneInvalida : public ExceptieGenerala {
 public:
     ExceptieOptiuneInvalida()
-        : ExceptieGenerala("Eroare: Opțiune invalidă selectată! Te rog, selectează o opțiune validă.") {}
+        : ExceptieGenerala("Eroare: Optiune invalida selectata! Te rog, selecteaza o optiune valida.") {}
 
 
     explicit ExceptieOptiuneInvalida(const std::string& mesaj)
@@ -35,25 +35,25 @@ public:
 class ExceptieGreutateInvalida : public ExceptieGenerala {
 public:
     ExceptieGreutateInvalida()
-        : ExceptieGenerala("Eroare: Greutatea introdusă este invalidă (trebuie să fie un număr pozitiv).") {}
+        : ExceptieGenerala("Eroare: Greutatea introdusa este invalida (trebuie sa fie un numar pozitiv).") {}
 };
 
 class ExceptieInaltimeInvalida : public ExceptieGenerala {
 public:
     ExceptieInaltimeInvalida()
-        : ExceptieGenerala("Eroare: Înălțimea introdusă este invalidă (trebuie să fie între 50 și 250 cm).") {}
+        : ExceptieGenerala("Eroare: Inaltimea introdusa este invalida (trebuie sa fie intre 50 si 250 cm).") {}
 };
 
 class ExceptieVarstaInvalida : public ExceptieGenerala {
 public:
     ExceptieVarstaInvalida()
-        : ExceptieGenerala("Eroare: Vârsta introdusă este invalidă (trebuie să fie un număr pozitiv).") {}
+        : ExceptieGenerala("Eroare: Varsta introdusa este invalida (trebuie sa fie un numar pozitiv).") {}
 };
 
 class ExceptieGenInvalid : public ExceptieGenerala {
 public:
     ExceptieGenInvalid()
-        : ExceptieGenerala("Eroare: Genul introdus este invalid (trebuie să fie 0 sau 1).") {}
+        : ExceptieGenerala("Eroare: Genul introdus este invalid (trebuie sa fie 0 sau 1).") {}
 };
 
 #endif // EXCEPTII_H

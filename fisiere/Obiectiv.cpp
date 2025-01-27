@@ -1,16 +1,15 @@
+// Obiectiv.cpp
 #include "Obiectiv.h"
 #include "Exceptii.h"
 #include <cmath>
 #include <algorithm>
+#include <iostream>
 
 void Obiectiv::valideaza(int greutate, int inaltime, int varsta, int gen) const {
-    (void)greutate;
-    (void)inaltime;
-    (void)varsta;
-    (void)gen;
+    valideazaDate(greutate, inaltime, varsta, gen);
 }
 
-void Obiectiv::valideazaDate(int greutate, int inaltime, int varsta, int gen)  {
+void Obiectiv::valideazaDate(int greutate, int inaltime, int varsta, int gen) const {
     if (greutate <= 0) {
         throw ExceptieGreutateInvalida();
     }
@@ -25,16 +24,20 @@ void Obiectiv::valideazaDate(int greutate, int inaltime, int varsta, int gen)  {
     }
 }
 
-
 std::string Slabire::getObiectivString() const {
     return "Slabire";
 }
 
 int Slabire::calculeazaCalorii(int greutate, int inaltime, int varsta, int gen) const {
-    valideaza(greutate, inaltime, varsta, gen);
-    int caloriiBaza = static_cast<int>(std::round(10 * greutate + 6.25 * inaltime - 5 * varsta));
-    int calorii = gen == 1 ? caloriiBaza - 500 : caloriiBaza - 600;
-    return std::max(calorii, 0);
+    try {
+        valideaza(greutate, inaltime, varsta, gen);
+        int caloriiBaza = static_cast<int>(std::round(10 * greutate + 6.25 * inaltime - 5 * varsta));
+        int calorii = gen == 1 ? caloriiBaza - 500 : caloriiBaza - 600;
+        return std::max(calorii, 0);
+    } catch (const std::exception& e) {
+        std::cerr << "Eroare la validarea datelor pentru Slabire: " << e.what() << std::endl;
+        return 0;
+    }
 }
 
 std::string MasaMusculara::getObiectivString() const {
@@ -42,10 +45,15 @@ std::string MasaMusculara::getObiectivString() const {
 }
 
 int MasaMusculara::calculeazaCalorii(int greutate, int inaltime, int varsta, int gen) const {
-   valideaza(greutate, inaltime, varsta, gen);
-    int caloriiBaza = static_cast<int>(std::round(10 * greutate + 6.25 * inaltime - 5 * varsta));
-    int calorii = gen == 1 ? caloriiBaza + 500 : caloriiBaza + 400;
-    return std::max(calorii, 0);
+    try {
+        valideaza(greutate, inaltime, varsta, gen);
+        int caloriiBaza = static_cast<int>(std::round(10 * greutate + 6.25 * inaltime - 5 * varsta));
+        int calorii = gen == 1 ? caloriiBaza + 500 : caloriiBaza + 400;
+        return std::max(calorii, 0);
+    } catch (const std::exception& e) {
+        std::cerr << "Eroare la validarea datelor pentru Masa Musculara: " << e.what() << std::endl;
+        return 0;
+    }
 }
 
 std::string Mentinere::getObiectivString() const {
@@ -53,10 +61,15 @@ std::string Mentinere::getObiectivString() const {
 }
 
 int Mentinere::calculeazaCalorii(int greutate, int inaltime, int varsta, int gen) const {
-   valideaza(greutate, inaltime, varsta, gen);
-    int caloriiBaza = static_cast<int>(std::round(10 * greutate + 6.25 * inaltime - 5 * varsta));
-    int calorii = gen == 1 ? caloriiBaza : caloriiBaza - 100;
-    return std::max(calorii, 0);
+    try {
+        valideaza(greutate, inaltime, varsta, gen);
+        int caloriiBaza = static_cast<int>(std::round(10 * greutate + 6.25 * inaltime - 5 * varsta));
+        int calorii = gen == 1 ? caloriiBaza : caloriiBaza - 100;
+        return std::max(calorii, 0);
+    } catch (const std::exception& e) {
+        std::cerr << "Eroare la validarea datelor pentru Mentinere: " << e.what() << std::endl;
+        return 0;
+    }
 }
 
 std::string Definire::getObiectivString() const {
@@ -64,8 +77,13 @@ std::string Definire::getObiectivString() const {
 }
 
 int Definire::calculeazaCalorii(int greutate, int inaltime, int varsta, int gen) const {
-   valideaza(greutate, inaltime, varsta, gen);
-    int caloriiBaza = static_cast<int>(std::round(10 * greutate + 6.25 * inaltime - 5 * varsta));
-    int calorii = gen == 1 ? caloriiBaza - 500 : caloriiBaza - 300;
-    return std::max(calorii, 0);
+    try {
+        valideaza(greutate, inaltime, varsta, gen);
+        int caloriiBaza = static_cast<int>(std::round(10 * greutate + 6.25 * inaltime - 5 * varsta));
+        int calorii = gen == 1 ? caloriiBaza - 500 : caloriiBaza - 300;
+        return std::max(calorii, 0);
+    } catch (const std::exception& e) {
+        std::cerr << "Eroare la validarea datelor pentru Definire: " << e.what() << std::endl;
+        return 0;
+    }
 }
