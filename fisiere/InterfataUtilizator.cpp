@@ -12,6 +12,7 @@
 #include "PlanAlimentar.h"
 //#include "ProdusException.h"
 #include "Exceptii.h"
+#include "CalculeazaNivelulStresului.h"
 #include <iostream>
 #include <fstream>
 #include <memory>
@@ -28,8 +29,34 @@ void InterfataUtilizator::pornire() {
 
     while (true) {
         if (!trecePeste) {
-            cout << "Introduceti ID-ul: ";
-            std::cin >> id;
+            cout<<"1-Calculeaza nivel stres \n"
+                  "2-altele ";
+            int opt;
+            cin>>opt;
+            if(opt == 1) {
+
+                cout <<"Alege: 1-Calcul exact nivel stres \n"
+           " 2-Calcul mai mult decat exact al nivelului de stres: numere cu virgula ";
+                int n;
+                cin>>n;
+                if (n==1)
+                {CalculeazaNivelulStresului<int> calculInt;
+                    calculInt.citesteDate();
+                    calculInt.calul();
+                }
+
+                else {
+                    CalculeazaNivelulStresului<float> calculFloat;
+                    calculFloat.citesteDate();
+                    calculFloat.calul();
+                }
+
+            }
+            else if(opt!=1)
+
+            {
+                cout << "Introduceti ID-ul: ";
+                std::cin >> id;
                 if (verificaId(id, client)) {
                     cout << "ID valid! Puteti comanda mancare.\n";
                     if (id / 100 == 33 || id / 100 == 44) {
@@ -37,7 +64,7 @@ void InterfataUtilizator::pornire() {
                         cout << "Doriti sa comandati un plan alimentar (la pachet)? (1 - Da, 0 - Nu): ";
                         std:: cin >> optiuneBox;
                         cout << "Doriti sa generam noi un meniu personalizat pentru dumneavoastra? (1-Da, 0-Nu): ";
-                         std::cin >> generare;
+                        std::cin >> generare;
 
                         if (optiuneBox == 1) {
                             int nrzile;
@@ -70,9 +97,9 @@ void InterfataUtilizator::pornire() {
                         cout << "1. La restaurant (rezervare masa)\n";
                         cout << "2. La pachet\n";
                         cout << "Alegere: ";
-                         std::cin >> optiuneServire;
+                        std::cin >> optiuneServire;
 
-                            switch (optiuneServire) {
+                        switch (optiuneServire) {
                             case 1: {
                                 client->setOptiuneServire(InRestaurant);
                                 if (id / 100 == 33) {
@@ -82,10 +109,10 @@ void InterfataUtilizator::pornire() {
                             }
                             case 2:
                                 client->setOptiuneServire(LaPachet);
-                                break;
+                            break;
                             default:
                                 throw ExceptieOptiuneInvalida("Optiune invalida.");
-                            }
+                        }
                     }
 
                     MeniuPrincipal meniu;
@@ -95,14 +122,17 @@ void InterfataUtilizator::pornire() {
                     afiseazaOptiuni(trecePeste);
                 }
 
-        } else {
+            } else {
 
-            client = make_unique<Client>(-1, "Client fara cont", "Necunoscut", "Necunoscut");
-            MeniuPrincipal meniu;
-            afiseazaComanda(meniu, client);
-            break;
+                client = make_unique<Client>(-1, "Client fara cont", "Necunoscut", "Necunoscut");
+                MeniuPrincipal meniu;
+                afiseazaComanda(meniu, client);
+                break;
+            }
         }
+
     }
+
 }
 
 
