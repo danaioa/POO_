@@ -31,4 +31,29 @@ public:
         : ExceptieGenerala("Eroare: " + mesaj) {}
 };
 
+
+class ExceptieGreutateInvalida : public ExceptieGenerala {
+public:
+    ExceptieGreutateInvalida()
+        : ExceptieGenerala("Eroare: Greutatea introdusă este invalidă (trebuie să fie un număr pozitiv).") {}
+};
+
+class ExceptieInaltimeInvalida : public ExceptieGenerala {
+public:
+    ExceptieInaltimeInvalida()
+        : ExceptieGenerala("Eroare: Înălțimea introdusă este invalidă (trebuie să fie între 50 și 250 cm).") {}
+};
+
+class ExceptieVarstaInvalida : public ExceptieGenerala {
+public:
+    ExceptieVarstaInvalida()
+        : ExceptieGenerala("Eroare: Vârsta introdusă este invalidă (trebuie să fie un număr pozitiv).") {}
+};
+
+class ExceptieGenInvalid : public ExceptieGenerala {
+public:
+    ExceptieGenInvalid()
+        : ExceptieGenerala("Eroare: Genul introdus este invalid (trebuie să fie 0 sau 1).") {}
+};
+
 #endif // EXCEPTII_H
