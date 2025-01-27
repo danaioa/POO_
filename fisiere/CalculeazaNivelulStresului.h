@@ -41,11 +41,6 @@ public:
         }
     }
 
-    void calculeazaStres() {
-        cout << "Numar de examene: " << numarExamene << endl;
-        cout << "Zile pana la primul examen: " << zilePanaPrimulExamen << endl;
-        cout << "Zile pana la ultimul examen: " << zilePanaUltimulExamen << endl;
-    }
 };
 
 #endif
