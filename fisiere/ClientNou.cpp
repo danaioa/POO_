@@ -89,7 +89,7 @@ void ClientNou::citesteDate() {
 
             if (obj != nullptr) {
                 cout << "Obiectiv ales: " << obj->getObiectivString() << "\n";
-                caloriiZilnice = obj->calculeazaCalorii(greutate, inaltime, varsta, gen);
+                caloriiZilnice = obj->calculCalorii(greutate, inaltime, varsta, gen);
                 cout << "Necesar caloric pentru obiectivul ales: " << caloriiZilnice << " calorii.\n";
             } else {
                 cout << "Obiectivul nu a fost ales corect. Setarea calorii la 0.\n";
@@ -120,7 +120,7 @@ void ClientNou::citesteDate() {
 
             if (obj != nullptr) {
                 cout << "Obiectiv ales: " << obj->getObiectivString() << "\n";
-                caloriiZilnice = obj->calculeazaCalorii(greutate, inaltime, varsta, gen);
+                caloriiZilnice = obj->calculCalorii(greutate, inaltime, varsta, gen);
                 cout << "Necesar caloric pentru obiectivul ales: " << caloriiZilnice << " calorii.\n";
             } else {
                 cout << "Obiectivul nu a fost ales corect. Setarea calorii la 0.\n";
