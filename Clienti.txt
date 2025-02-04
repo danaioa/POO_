@@ -1,12 +1,22 @@
 ID: 3304
-Nume: aurelian 
+Nume: aurelian
 Telefon: 0727545254
-Adresa: strada a nr b 
+Adresa: strada a nr b
 Varsta: 35
 Greutate: 150 kg
 Inaltime: 190 cm
 NrComenzi: 2
 Gen: Masculin
 Calorii: 1900
-Data expirare abonament: 27-01-2025
+Data expirare abonament: 27-01-2025ID: 3305
+Nume: dana
+Telefon: 0727548785
+Adresa: starada f nr t
+Varsta: 45
+Greutate: 120 kg
+Inaltime: 180 cm
+NrComenzi: 0
+Gen: Feminin
+Calorii: -
+Data expirare abonament: 04-03-2025
 ---------------------------
